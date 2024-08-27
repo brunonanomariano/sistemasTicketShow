@@ -1,5 +1,13 @@
 # sistemasTicketShow
 -------------------------------------------
+Integrantes
+-------------------------------------------
+-Mariano Bruno
+-Carolina Avellaneda
+-Stefania Berger
+
+
+-------------------------------------------
 Definición de aplicación:
 -------------------------------------------
 Nombre: TicketShow.com

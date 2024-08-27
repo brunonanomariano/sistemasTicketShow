@@ -55,7 +55,7 @@ Especificaciones técnicas:
 
 -realizarCompra: recibe los datos de compra, y los graba en un archivo.<br>
 
-consultarEntradas: accede al archivo de compras y muestra las compras de un usuario.<br>
+-consultarEntradas: accede al archivo de compras y muestra las compras de un usuario.<br>
 
 -------------------------------------------
 Segmentación de responsabilidades:	

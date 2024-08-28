@@ -3,7 +3,9 @@
 Integrantes
 -------------------------------------------
 -Mariano Bruno<br>
+
 -Carolina Avellaneda<br>
+
 -Stefania Berger<br>
 
 

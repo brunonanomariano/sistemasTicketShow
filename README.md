@@ -3,11 +3,8 @@
 Integrantes
 -------------------------------------------
 -Mariano Bruno<br>
-
 -Carolina Avellaneda<br>
-
 -Stefania Berger<br>
-
 
 -------------------------------------------
 Definición de aplicación:
@@ -43,21 +40,15 @@ Funcionalidades y descripción:
 -------------------------------------------
 Especificaciones técnicas:
 -------------------------------------------
--registrar_Usuario: recibe un archivo, pide usuario y contraseña; y lo graba en el archivo y devuelve True o False si pudo grabar. <br>
 
--logear_Usuario: recibe usuario y contraseña, valida si está en el archivo y devuelve True o False si lo encontró.<br>
-
--order_Show: recibe una lista de shows, las ordena por fecha y devuelve la lista ordenada. <br>
-
--seleccionar_Show: recibe una lista y se selecciona una y muestra ubicaciones por pantalla.<br>
-
--seleccionar_asiento: recibe una matriz, pide al usuario que seleccione una ubicación y de estar disponible la reserva.<br>
-
--formulario_de_pago: solicita nombre, apellido, dirección, email, tarjeta, fecha de expiración y -código de seguridad, valida los formatos y devuelve True si esta todo bien o False caso contrario.<br>
-
--realizarCompra: recibe los datos de compra, y los graba en un archivo.<br>
-
--consultarEntradas: accede al archivo de compras y muestra las compras de un usuario.<br>
+1.	Crear un usuario: El sistema pedirá que se ingrese un email y una contraseña. Se validará el formato del email y los requisitos de la contraseña (una mayúscula, un numero y un carácter especial). Si el email y la contraseña son inválidos, entonces se informa por pantalla y se vuelve a pedir que los ingrese de nuevo. Si los datos son válidos se validará que no exista el usuario en el archivo json. Si existe se vuelve a pedir los datos al usuario. Si no existe entonces se guarda usuario y contraseña en el archivo json. <br>
+2.	Iniciar sesión: El sistema pedirá que se ingrese un mail y una contraseña. Se validará el formato del mail. Si el formato es invalido se avisará por pantalla y se pedirá que ingrese un mail valido. Si el formato es válido entonces se procede a buscar el usuario en el archivo Json. Si el usuario no existe entonces se informará por pantalla y se pedirá que ingrese el mail de nuevo. Si existe se validará que la contraseña coincida con la del usuario. Si la contraseña no coincide entonces se informará del error al usuario del error para que la reingrese. Si la contraseña coincide entonces se avanzará a la pantalla principal.<br>
+3.	Verificar disponibilidad de show: se verificará cada una de las filas para determinar si hay ubicaciones disponibles y se informara un recuento total de dichas ubicaciones. Por ejemplo, si en la fila 1 hay diez lugares, en la 2 cero lugares y en la 3 cinco lugares, se devolverá que hay 15 lugares disponibles para ese show.<br>
+4.	Seleccionar un show al que se quiere asistir: luego de calcular la disponibilidad para cada show, se mostrar por pantalla la fecha y la cantidad de lugares disponibles. El usuario elige una fecha deseada. Si la fecha deseada tiene 0 lugares disponibles se informará que no es posible comprar para esa fecha y se pedirá que elija otra. Si la fecha tiene lugares disponibles, entonces se avanza con la pantalla de selección de ubicaciones.<br>
+5.	Aplicar descuentos al total del ticket según un cupón: consultar al usuario si tiene algún cupón de descuento y en caso de que lo tenga validar si el cupón que ingresa se encuentra dentro de la lista de cupones cargadas en el sistema. Si no existe se informara al usuario que el cupón no existe y se volverá a pedir que ingrese el cupón o que avance a la siguiente pantalla y se mostrara las ubicaciones con el precio de cada sector. Si existe se avanzar a la siguiente pantalla y se mostrara las ubicaciones con el precio de cada sector con el descuento aplicado. <br>
+6.	Seleccionar una o más ubicaciones disponibles: se mostrará por pantalla las ubicaciones donde “O” significa que el lugar está disponible y “X” que el lugar no esta disponible. Se pedirá al usuario que ingrese la cantidad de entradas a comprar y luego se pedirá que indique que fila y columna desea comprar. Si las coordenadas que selección esta marcada con “X” se informara que no es posible comprar esa ubicación y se le pedirá que ingrese otra. Si la ubicación seleccionada se encuentra en “O” entonces se avanzará se calculará el total de la compra y se avanzara a la siguiente pantalla o se pedirá que ingrese la siguiente entrada (dependiendo de cuantas informó que iba a comprar).
+7.	Finalizar compra y guardar información de compra: se mostrará el total de la compra, se pedirá al usuario que ingrese una tarjeta, se verificará que la tarjeta exista en el archivo json de tarjetas. Si la tarjeta no existe se informará al usuario y se pedirá que la ingrese nuevamente. Si la tarjeta existe entonces se recupera la información del saldo. Se valida que el saldo sea suficiente para abonar el tota de la compra. Si el saldo no es suficiente se informará al usuario y se regresará a la pantalla principal. Si se pudo efectuar la compra se informará por pantalla y se guardaran los datos del nombre de usuario, show, ubicaciones y total de la compra en un archivo. <br>
+8.	Consultar compras hechas: se busca en el archivo de compras las compras del usuario. Si el usuario no tiene compras se informará por pantalla que no realizo ninguna compra. Si el usuario tiene una o mas compras, se mostrará por pantalla el detalle de las compras realizadas. <br>
 
 -------------------------------------------
 Segmentación de responsabilidades:	

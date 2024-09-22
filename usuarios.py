@@ -1,4 +1,4 @@
-from re import match
+from re import match, search
 
 ##########################################################################################################################################
 #  Funcion     : validarEmail
@@ -19,12 +19,28 @@ def validarEmail (email):
 #  Entrada     : password
 #  Salida      : 
 #######################################################################################################AAA###################################
-
-
 def validarPassword(password):
-    patron = "[]"
-    return
+    
+    patron = "[A-Z][a-zA-z0-9\#\$\&\-\_\?\!\%\*]{,8}" #Que haya 8 caracteres máximos de esas combinaciones
+    resultado = match(patron, password) #que el padrón matchee con la contraseña ingresada. Devuelve un objeto si es así.
+    
+    if resultado: #si el resultado no es None y sí es un objeto, entonces: 
+        caracteresEsp = "[\#\$\&\-\_\?\!\%\*]" #creo una variable para mis caracteres esp.
+        numeros = "[0-9]" #creo una variable para los números 
+        matchEspeciales = search(caracteresEsp, password) #se encuentra si hay algún caracter especial en la password
+        matchNumeros = search(numeros, password) # se encuentra si hay algún número en la password
+        #Tiene que verificarse que haya sí o sí un caracter especial y un número, por lo tanto: 
+        if matchNumeros and matchEspeciales: #si el search devuelve un objeto, es porque encontró un caracter esp. o un número
+            coincidencia = True
+        else:   
+            coincidencia = False #No encontró un caracter esp. o un número
+    else:  
+        coincidencia = False #No hay coincidencias, ya que la pass no tiene 8 caracteres
 
+    return coincidencia 
+
+   
+ 
 
 
 ##########################################################################################################################################
@@ -50,4 +66,6 @@ def crearUsuario ():
     
 
 
-crearUsuario()
+password = "Ca#orari"
+print(validarPassword(password))
+

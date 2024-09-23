@@ -1,4 +1,5 @@
 from re import match, search
+from globales import *
 
 ##########################################################################################################################################
 #  Funcion     : validarEmail
@@ -21,11 +22,11 @@ def validarEmail (email):
 #######################################################################################################AAA###################################
 def validarPassword(password):
     
-    patron = "[A-Z][a-zA-z0-9\#\$\&\-\_\?\!\%\*]{,8}" #Que haya 8 caracteres máximos de esas combinaciones
+    patron = "[A-Z][a-zA-Z0-9#&-_!%]{,8}" #Que haya 8 caracteres máximos de esas combinaciones
     resultado = match(patron, password) #que el padrón matchee con la contraseña ingresada. Devuelve un objeto si es así.
     
     if resultado: #si el resultado no es None y sí es un objeto, entonces: 
-        caracteresEsp = "[\#\$\&\-\_\?\!\%\*]" #creo una variable para mis caracteres esp.
+        caracteresEsp = "[#&-_!%]" #creo una variable para mis caracteres esp.
         numeros = "[0-9]" #creo una variable para los números 
         matchEspeciales = search(caracteresEsp, password) #se encuentra si hay algún caracter especial en la password
         matchNumeros = search(numeros, password) # se encuentra si hay algún número en la password
@@ -51,13 +52,13 @@ def validarPassword(password):
 ##########################################################################################################################################
 
 
-def crearUsuario ():  
+def crearUsuario():  
     
     usuarioInvalido = True #Se setea en true para que entre la primera vez
 
     while usuarioInvalido == True: 
         usuario = input("Ingrese una dirección de correo: ").lower()  #Convertimos todo a minuscula para que no sea key sensitive 
-        valido = validarEmail(usuario) #None - un objeto
+        valido = validarEmail(usuario) #Devuelve None o un objeto
         if valido: #Si la dirección de correo hizo match, entonces salimos del ciclo y termina la ejecución.
             usuarioInvalido = False 
         else:
@@ -65,7 +66,19 @@ def crearUsuario ():
             print("El email ingresado no tiene un formato válido. Intente nuevamente. ")
     
 
+    passwordInvalido = True #Se setea en true para que entre la primera vez
 
-password = "Ca#orari"
-print(validarPassword(password))
+    while passwordInvalido == True:
+        password = input("Ingrese la contraseña, la misma debe comenzar con mayuscula, tener al menos un numero, al menos un caracter especial (# & - _ ! %): ")
+        valida = validarPassword(password)
+        if valida:
+            passwordInvalido = False
+        else:
+           passwordInvalido = True
+           print("La contraseña ingresada no cumple con los requisitos. ")
+
+    #Una vez ingresados corectamente usuario y contraseña la grabo en una variable diccionario y la agrega a mi lista de usuarios
+    usuario = {"user": usuario, "pass": password}
+    usuarios.append(usuario)
+
 

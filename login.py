@@ -4,17 +4,35 @@
 # entrada     : usuario(correo) y contraseña con la que el usuario se quiere loguear.
 # salida      : True: Si el usuario está registrado y la contraseña coincide. 
 # False: Si el usuario no está registrado o la contraseña no es correcta.
-usuarios_registrados = {}
 
-def logear_usuario(usuario, password):
-    # se valida si el usuario existe en el diccionario
-    if usuario in usuarios_registrados:
-        # verificar si la contraseña coincide
-        if usuarios_registrados[usuario] == password:
-            return True 
+from globales import usuarios  
+
+def verificar_usuario(usuario, contraseña):
+
+    usuario = input("Ingresa el usuario: ")
+    contraseña = input("Ingresa la contraseña: ")
+
+    encontrado = False
+    for i in usuarios:
+        if i[usuario] == contraseña:
+            encontrado = True
+
+    return encontrado
+
+
+def logear_usuario():
+    autenticado = False
+    
+    while not autenticado:
+        
+        usuario = input("Ingresa el usuario: ")
+        contraseña = input("Ingresa la contraseña: ")
+
+        
+        if verificar_usuario(usuario, contraseña):
+            print("Usuario logueado correctamente")
+            autenticado = True  
         else:
-            return False  # Contraseña incorrecta
-    else:
-        return False  # Usuario no encontrado
-    
-    
+            print("Usuario o contraseña incorrectos, intenta de nuevo.")
+
+logear_usuario()

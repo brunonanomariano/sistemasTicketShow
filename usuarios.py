@@ -69,7 +69,7 @@ def crearUsuario():
     passwordInvalido = True #Se setea en true para que entre la primera vez
 
     while passwordInvalido == True:
-        password = input("Ingrese la contraseña, la misma debe comenzar con mayuscula, tener al menos un numero, al menos un caracter especial (# & - _ ! %): ")
+        password = input("Ingrese la contraseña: ")
         valida = validarPassword(password)
         if valida:
             passwordInvalido = False

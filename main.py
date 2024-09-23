@@ -19,6 +19,6 @@ lugares_disponibles = calcular_disponibilidad(sala)
 system("cls")
 
 #Seleccion de ubicaciones
-seleccionar_sala()
+selecionar_ubicacion_screen()
 imprimir_sala(sala, lista_precios, filas_en_letras, asientos)
 fila, asiento = elegir_lugares(filas_en_letras,asientos)

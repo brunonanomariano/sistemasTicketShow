@@ -3,6 +3,7 @@ from compras import *;
 from pantallas import *;
 from procesarPantallas import *;
 from crearUsuario import *;
+from login import *
 import random;
 from os import system
 
@@ -29,11 +30,15 @@ system("cls")
 
 
 bienvenida_screen()
-opcionElegida = procesar_bienvenida()
-print(opcionElegida)
-if opcionElegida == 1:
-    crear_usuario_screen()
-elif opcionElegida == 2:
-    pass
-elif opcionElegida == 3:
-    pass
+opcionElegida = 0 # Seteo opcion elegida en 0 para entrar al ciclo de pantallas
+while opcionElegida != 3: #Si opcion elegida es 3 entonces termino el programa
+    opcionElegida = procesar_bienvenida()
+    if opcionElegida == 1:
+        crear_usuario_screen()
+    elif opcionElegida == 2:
+        iniciar_sesion_screen()
+        login_exitoso = logear_usuario()
+        if login_exitoso:
+            pass #aca iria la pantalla de seleccion de shows
+        else:
+            pass

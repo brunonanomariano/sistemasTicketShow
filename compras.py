@@ -1,3 +1,5 @@
+from re import match;
+
 ##########################################################################################################################################
 #  Funcion     : elegir_lugares
 #  Descripcion : se elige y valida una ubicacion ingresada por el usuario para que la misma se encuentre
@@ -11,29 +13,27 @@ def elegir_lugares(filas,asientos):
     while coordenada_incorrecta:
         coordenadas = input("Ingrese las coordenadas que desea comprar, indicando primero la fila y luego el asiento:\n")
 
-        #Separo las cordenadas recibidas en 2 cadenas, para luego poder aplicar los metodos de validacion
-        #isalpha y isnumeric y asi validar que los valores ingresados sean los esperados
-        fila  =""
-        asiento =""
-        fila += coordenadas[0].upper() #Lo seteo en mayuscula para poder comparar con la lista de filas
-        asiento += coordenadas[1]
+        #Verifico que las coordenadas tenga el formato letra + numero de uno o dos digitos
+        patron = "^[a-zA-Z][0-9]{1,2}$"
+        coincide = match(patron,coordenadas)
 
-        #Valido que las coordenadas sean validas:
-        #No pueden ser mas 2, ni estar vacias
-        if len(coordenadas) > 2 or len(coordenadas) == 0:
-            print("Las coordenadas ingresadas no son validas, debe tener solo dos valores")
-        #La primera debe ser una letra y la segunda un numero
-        elif not(fila.isalpha()) or not(asiento.isnumeric()):
-            print("Las coordenadas ingresadas no son validas, el primer valor debe ser alfanumerico y el segundo numerico")
-        #La fila y el asiento deben estar dentro de las listas de filas y asientos pasado por parametros
-        elif not(fila in filas) or not(int(asiento) in asientos):
-            print("Las coordenadas ingresadas no se encuentran en pantalla")
-        else:
-            coordenada_incorrecta = False
+        #si hay match me separo la letra y el numero
+        if coincide:
+            fila = coordenadas[0:1].upper() #La letra la transformo a mayuscula para comparar con la lista de asientos en  mayuscula
+            asiento = int(coordenadas[1:])-1
+            #Verifico que las filas y los asientos se encuentren en la sala
+            if not(fila in filas) or not(asiento in asientos):
+                print("Las coordenadas ingresadas no se encuentran en pantalla")
+                coordenada_incorrecta = True
+            else:
+                coordenada_incorrecta = False
+        else: #Sino informo que se ingresaron mal
+            print("Las coordenadas ingresadas no poseen un formato valido")
+            coordenada_incorrecta = True
 
     #Transforo el asiento elegido al indice correspondiente, como en pantalla la primera posicion
     #se muestra como 1, debo restarle 1 ya que los indices arrancan desde 0 en la matriz sala
-    asiento_elegido = int(asiento)-1
+    asiento_elegido = asiento
 
     #Transformo la fila elegida a un indice de la matriz sala, como "A" es 65 en ascii
     #entonces al pasarlo a valor en ascii debo restarla 65 para obtener el indice apartir de 0

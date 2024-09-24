@@ -39,7 +39,7 @@ while opcionElegida != 3: #Si opcion elegida es 3 entonces termino el programa
             fila_en_letras = enumerar_filas(sala)
             cant_asientos = len(sala[0])
             lista_asientos = list(range(cant_asientos))
-
+            
             selecionar_ubicacion_screen()
             imprimir_sala(sala, lista_precios, fila_en_letras, lista_asientos)
             elegir_lugares(fila_en_letras,lista_asientos)

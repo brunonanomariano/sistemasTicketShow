@@ -1,3 +1,2 @@
 #Lista de usuarios creados
-
-usuarios = []
+lista_usuarios = []

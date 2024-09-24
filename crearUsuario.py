@@ -79,6 +79,6 @@ def crearUsuario():
 
     #Una vez ingresados corectamente usuario y contraseña la grabo en una variable diccionario y la agrega a mi lista de usuarios
     usuario = {"user": usuario, "pass": password}
-    usuarios.append(usuario)
+    lista_usuarios.append(usuario)
 
 

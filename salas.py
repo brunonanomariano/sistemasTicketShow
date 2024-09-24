@@ -130,7 +130,16 @@ def armar_lista_precios(cant_filas, precioBase, incremento):
 
     return lista_precios
 
-
-
-print(armar_lista_precios(10,2000,5000))
-    
+##########################################################################################################################################
+#  Funcion     : listar_shows
+#  Descripcion : recibe una lista de show y lista las caracteristicas del mismo
+#  Entrada     : lista_shows (la lista de shows cargados en sistema)
+##########################################################################################################################################
+def listar_shows(lista_shows):
+    for show in lista_shows:
+        print("                                               ____________________________________")
+        print(f"""                                              | Artista: {show["nombreArtista"]}
+                                              | Fecha: {show["fecha"]} 
+                                              | Lugares disponibles: {show["disponibilidadAsientos"]}
+                                              | Precios desde: ${show["precioBase"]} """)
+        print("                                               ------------------------------------")

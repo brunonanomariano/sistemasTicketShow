@@ -9,7 +9,7 @@ from globales import *
 #######################################################################################################AAA###################################
 
 def validarEmail (email):
-    patron = "[0-9a-z]+@[a-z]+.[com]"
+    patron = "[0-9a-z]+@[a-z]+.com"
     resultado = match(patron, email) 
     return resultado
 
@@ -18,7 +18,7 @@ def validarEmail (email):
 #  Funcion     : validarPassword
 #  Descripcion : recibe un password y valida el formato. 
 #  Entrada     : password
-#  Salida      : 
+#  Salida      : none (no hay coincidencia en el patrón) o objeto (hay coincidencia en el patrón)
 #######################################################################################################AAA###################################
 def validarPassword(password):
     
@@ -83,3 +83,4 @@ def crearUsuario():
 
 
 ######################################################################################################
+

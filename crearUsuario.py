@@ -111,7 +111,7 @@ def crearUsuario():
         else:
             usuarioInvalido = True #El usuario es invalido por el formato (validación patrón-email), hay que ingresarlo nuevamente. 
                                    #Se setea la bandera en True para continuar el ciclo.
-            print("El email ingresado no tiene un formato válido. Intente nuevamente. ")
+            print("El email ingresado no tiene un formato válido. Por favor, intente nuevamente. ")
     
 
     #---ValidaciónPassword----
@@ -125,7 +125,7 @@ def crearUsuario():
             passwordInvalido = False #Se cambia la bandera a False y se termina el ciclo.
         else:
            passwordInvalido = True #Sino, la password es Invalida. Se setea la bandera en True. Continúa el ciclo.
-           print("La contraseña ingresada no cumple con los requisitos. ")
+           print("La contraseña ingresada no cumple con los requisitos. Por favor, intente nuevamente. ")
 
 
 

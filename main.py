@@ -32,7 +32,7 @@ while opcionElegida != 3: #Si opcion elegida es 3 entonces termino el programa
             sala_elegida = procesar_seleccion_shows()
 
             #Una vez elegido el show comienzo a armar las claves para imprimir la sala
-            sala = lista_conciertos[sala_elegida-1]["sala"]
+            sala = lista_conciertos[sala_elegida]["sala"]
             cant_filas = len(sala)
             precio_base = lista_conciertos[sala_elegida]["precioBase"]
             lista_precios = armar_lista_precios(cant_filas,precio_base,1000)

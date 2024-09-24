@@ -48,8 +48,11 @@ def procesar_seleccion_shows():
 
     opcionCorrecta = False
     while opcionCorrecta == False:
-        opcion = int(input("Ingrese el show al cual desea asistir ----> "))
+        opcion = int(input("Ingrese el show al cual desea asistir ----> "))-1 #La opcion elegida en realidad es una anterior en mi lista de opciones
         opcionCorrecta = verificar_opcion(opcion, lista_opciones)
+        if lista_conciertos[opcion]["disponibilidadAsientos"] == 0:
+            opcionCorrecta = False
+            print("El show al cual desea asistir se encuentra agotado, por favor seleccione otra fecha")
 
     return opcion
 

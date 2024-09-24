@@ -2,6 +2,22 @@ from re import match, search
 from globales import *
 
 ##########################################################################################################################################
+#  Funcion     : existeUsuario
+#  Descripcion : recibe un usuario y verifica si ya existe 
+#  Entrada     : usuario
+#  Salida      : True (si usuario ya existe en la lista de usuarios)
+#                False (si el usuario no existe)
+#######################################################################################################AAA###################################
+
+def existeUsuario (usuario):
+    for dicUsuario in lista_usuarios:
+        if dicUsuario["user"] == usuario:
+            return True
+    
+    return False
+
+
+##########################################################################################################################################
 #  Funcion     : validarEmail
 #  Descripcion : recibe un email y valida el formato. 
 #  Entrada     : email

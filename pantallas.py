@@ -38,7 +38,7 @@ def crear_usuario_screen():
     print("     - 8 caracteres                                                                   ")
     print("     - La primer letra mayuscula                                                      ")
     print("     - Al menos 1 caracter numerico                                                   ")
-    print("     - Al menos 1 caracter especial (# & - _ ! %)                                     ")
+    print("     - Al menos 1 caracter especial (# & _ ! %)                                       ")
     print("                                                                                      ")
     print("                                                                                      ")
 

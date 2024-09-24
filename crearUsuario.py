@@ -49,7 +49,7 @@ def validarEmail (email):
 
 def validarPassword(password):
     
-    patron = "[A-Z][a-zA-Z0-9#&-_!%]{,8}" #Que haya 8 caracteres máximos con esas combinaciones mencionadas. 
+    patron = "[A-Z][a-zA-Z0-9#&_!%]{,8}" #Que haya 8 caracteres máximos con esas combinaciones mencionadas. 
                                           #La primer letra deberá ser una mayúscula.
                                           #Luego se compone de elementos alfanúmericos y caracteres especiales ya definidos. 
 
@@ -58,7 +58,7 @@ def validarPassword(password):
                                         #sino devuelve None.
     
     if resultado: #If resultado == True | Es decir, si el resultado no es None y sí es un objeto coincidencia, entonces: 
-        caracteresEsp = "[#&-_!%]" #Creo una variable para mis caracteres especiales.
+        caracteresEsp = "[#&_!%]" #Creo una variable para mis caracteres especiales.
         numeros = "[0-9]" #Creo una variable para los números.
         matchEspeciales = search(caracteresEsp, password) #Se busca si hay al menos algún caracter especial presente en la password.
         matchNumeros = search(numeros, password) #Se busca si hay al menos algún número presente en la password. 

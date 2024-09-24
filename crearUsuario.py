@@ -12,6 +12,7 @@ from globales import *
 def existeUsuario (usuario):
     for dicUsuario in lista_usuarios:
         if dicUsuario["user"] == usuario:
+            print("Lo sentimos, el usuario ingresado ya existe.")
             return True
     
     return False
@@ -75,10 +76,10 @@ def crearUsuario():
     while usuarioInvalido == True: 
         usuario = input("Ingrese una dirección de correo: ").lower()  #Convertimos todo a minuscula para que no sea key sensitive 
         valido = validarEmail(usuario) #Devuelve None o un objeto
-        if valido: #Si la dirección de correo hizo match, entonces salimos del ciclo y termina la ejecución.
-            usuarioInvalido = False 
+        if valido: #Si la dirección de correo hizo match, habrá que validar que no exista previamente:
+            usuarioInvalido = existeUsuario(usuario) #Si usuario existe previamente, usuario invalido seguirá siendo true. Si es false, sale del ciclo porque el usuario no existe. 
         else:
-            usuarioInvalido = True #El usuario es invalido, hay que ingresarlo nuevamente. Se setea la bandera en true para continuar el ciclo.
+            usuarioInvalido = True #El usuario es invalido por el formato, hay que ingresarlo nuevamente. Se setea la bandera en true para continuar el ciclo.
             print("El email ingresado no tiene un formato válido. Intente nuevamente. ")
     
 

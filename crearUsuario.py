@@ -9,26 +9,34 @@ from globales import *
 #                False (si el usuario no existe)
 #######################################################################################################AAA###################################
 
-def existeUsuario (usuario):
-    for dicUsuario in lista_usuarios:
-        if dicUsuario["user"] == usuario:
+def existeUsuario (usuario): #Tiene como parametro el usuario que se creó en la función crearUsuario
+    for dicUsuario in lista_usuarios: # Recorre la lista y se fija si el usuario está. 
+                                      #Le asigna cada elemento de lista_usuarios a dicUsuarios.
+                                      #lista_usuarios se encuentra el globales.
+        if dicUsuario["user"] == usuario: #Si en la clave user de cada dicUsuario se encuentra el usuario que se pasó por parametro,
+                                          #Entonces el usuario ya existe.
             print("Lo sentimos, el usuario ingresado ya existe.")
-            return True
+            return True #Existe le usuario
     
-    return False
+    return False #No existe el usuario 
 
 
 ##########################################################################################################################################
 #  Funcion     : validarEmail
 #  Descripcion : recibe un email y valida el formato. 
 #  Entrada     : email
-#  Salida      : none (no hay coincidencia en el patrón) o objeto (hay coincidencia en el patrón)
+#  Salida      : none (no hay coincidencia en el patrón) u objeto coincidencia (hay match del email con el patrón)
 #######################################################################################################AAA###################################
 
 def validarEmail (email):
-    patron = "[0-9a-z]+@[a-z]+.com"
-    resultado = match(patron, email) 
-    return resultado
+    patron = "[0-9a-z]+@[a-z]+.com" #Se crea la variable patrón que guarda las validaciones del email.
+                                    #Las validaciones se componen de:
+                                    #+: uno o más caracteres [0-9a-z]   
+                                    # @[a-z] -> arroba más uno o más caracteres a-z
+                                    #.com -> el literal
+    resultado = match(patron, email) #Compara el email con el patrón descripto
+                                   
+    return resultado   #Si hay match, devuelve un objeto considencia, sino devuelve None.
 
 
 ##########################################################################################################################################

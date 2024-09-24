@@ -28,7 +28,7 @@ def procesar_bienvenida():
     while opcionCorrecta == False:
         opcion = int(input("Por favor ingrese una opcion para continuar ----> "))
         opcionCorrecta = verificar_opcion(opcion, [1,2,3])
-
+        
     return opcion
 
 
@@ -48,10 +48,11 @@ def procesar_seleccion_shows():
 
     opcionCorrecta = False
     while opcionCorrecta == False:
-        opcion = int(input("Ingrese el show al cual desea asistir ----> "))-1 #La opcion elegida en realidad es una anterior en mi lista de opciones
+        opcion = int(input("Ingrese el show al cual desea asistir ----> "))
         opcionCorrecta = verificar_opcion(opcion, lista_opciones)
         if opcionCorrecta:
-            if lista_conciertos[opcion]["disponibilidadAsientos"] == 0:
+            opcion -= 1 #La opcion elegida en realidad es una anterior porque mi lista de conciertos arranca con indice 0
+            if lista_conciertos[opcion]["disponibilidadAsientos"] == 0: 
                 opcionCorrecta = False
                 print("El show al cual desea asistir se encuentra agotado, por favor seleccione otra fecha")
              

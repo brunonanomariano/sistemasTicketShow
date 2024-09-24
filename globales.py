@@ -5,19 +5,19 @@ lista_usuarios = [
     ]
 
 #Creo las salas y calculo su disponibilidad
-sala_abel = crear_sala(20,9)
+sala_abel = crear_sala(11,9)
 disp_abel = calcular_disponibilidad(sala_abel)
 
-sala_tanBionica = crear_sala(15,9)
+sala_tanBionica = crear_sala(10,9)
 disp_tanBionica = calcular_disponibilidad(sala_tanBionica)
 
-sala_twenty_one_pilots = crear_sala(20,10)
+sala_twenty_one_pilots = crear_sala(11,10)
 disp_twenty_one_pilots = calcular_disponibilidad(sala_twenty_one_pilots)
 
-sala_sole = crear_sala(10,15)
+sala_sole = crear_sala(8,15)
 disp_sole = calcular_disponibilidad(sala_sole)
 
-sala_redhot = crear_sala(15,15)
+sala_redhot = crear_sala(13,15)
 disp_redhot = calcular_disponibilidad(sala_redhot)
 
 #Armo la lista de shows disponibles

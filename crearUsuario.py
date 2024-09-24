@@ -78,7 +78,7 @@ def crearUsuario():
            print("La contraseña ingresada no cumple con los requisitos. ")
 
     #Una vez ingresados corectamente usuario y contraseña la grabo en una variable diccionario y la agrega a mi lista de usuarios
-    usuario = {"user": usuario, "pass": password}
+    usuario = {"user": usuario, "password": password}
     lista_usuarios.append(usuario)
 
 

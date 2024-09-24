@@ -29,12 +29,13 @@ system("cls")
 
 
 
-bienvenida_screen()
 opcionElegida = 0 # Seteo opcion elegida en 0 para entrar al ciclo de pantallas
 while opcionElegida != 3: #Si opcion elegida es 3 entonces termino el programa
+    bienvenida_screen()
     opcionElegida = procesar_bienvenida()
     if opcionElegida == 1:
         crear_usuario_screen()
+        crearUsuario()
     elif opcionElegida == 2:
         iniciar_sesion_screen()
         login_exitoso = logear_usuario()

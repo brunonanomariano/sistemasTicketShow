@@ -136,10 +136,12 @@ def armar_lista_precios(cant_filas, precioBase, incremento):
 #  Entrada     : lista_shows (la lista de shows cargados en sistema)
 ##########################################################################################################################################
 def listar_shows(lista_shows):
+    i = 0 #Genero una variable indice para identificar las opciones
     for show in lista_shows:
+        i += 1 #Evito arrancar con la opcion 0
         print("                                               ____________________________________")
         print(f"""                                              | Artista: {show["nombreArtista"]}
-                                              | Fecha: {show["fecha"]} 
+                                          {i}   | Fecha: {show["fecha"]} 
                                               | Lugares disponibles: {show["disponibilidadAsientos"]}
                                               | Precios desde: ${show["precioBase"]} """)
         print("                                               ------------------------------------")

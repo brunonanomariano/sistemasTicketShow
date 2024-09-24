@@ -7,17 +7,6 @@ from login import *
 import random;
 from os import system
 
-CANT_FILAS = 13
-CANT_ASIENTOS = 10
-PRECIO_DELANTERO = 55000
-
-#filas_en_letras = enumerar_filas(CANT_FILAS)
-#asientos = [elemento for elemento in range(CANT_ASIENTOS)]
-
-#sala = crear_sala(CANT_ASIENTOS,CANT_FILAS)
-#lista_precios = armar_lista_precios(CANT_FILAS, PRECIO_DELANTERO)
-#lugares_disponibles = calcular_disponibilidad(sala)
-
 #Limpio la pantalla
 system("cls")
 
@@ -40,7 +29,20 @@ while opcionElegida != 3: #Si opcion elegida es 3 entonces termino el programa
         if login_exitoso:
             selecionar_shows_screen()
             listar_shows(lista_conciertos)
-            input()
+            sala_elegida = procesar_seleccion_shows()
+
+            #Una vez elegido el show comienzo a armar las claves para imprimir la sala
+            sala = lista_conciertos[sala_elegida]["sala"]
+            cant_filas = len(sala)
+            precio_base = lista_conciertos[sala_elegida]["precioBase"]
+            lista_precios = armar_lista_precios(cant_filas,precio_base,1000)
+            fila_en_letras = enumerar_filas(sala)
+            cant_asientos = len(sala[0])
+            lista_asientos = list(range(cant_asientos))
+
+            selecionar_ubicacion_screen()
+            imprimir_sala(sala, lista_precios, fila_en_letras, lista_asientos)
+            elegir_lugares(fila_en_letras,lista_asientos)
         else:
             pass
 

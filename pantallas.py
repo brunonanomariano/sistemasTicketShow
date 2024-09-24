@@ -79,3 +79,17 @@ def iniciar_sesion_screen():
     print("   al menu principal                                                                  ")
     print("                                                                                      ")
     print("                                                                                      ")
+
+def selecionar_shows_screen():
+    system("cls")
+    print("**************************************************************************************")
+    print("                                                                                      ")
+    print("              ▂▃▄▅▆▇█▓▒░ SISTEMAS TICKET SHOW ░▒▓█▇▆▅▄▃▂                      ")
+    print("                                                                                      ")
+    print("                              SELECCION DE SHOW                                       ")
+    print("                                                                                      ")
+    print("**************************************************************************************")
+    print("                                                                                      ")
+    print("  Seleccione el show al cual desea asistir:                                           ")
+    print("                                                                                      ")
+    print("                                                                                      ")

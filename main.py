@@ -27,8 +27,6 @@ system("cls")
 #fila, asiento = elegir_lugares(filas_en_letras,asientos)
 
 
-
-
 opcionElegida = 0 # Seteo opcion elegida en 0 para entrar al ciclo de pantallas
 while opcionElegida != 3: #Si opcion elegida es 3 entonces termino el programa
     bienvenida_screen()
@@ -40,7 +38,9 @@ while opcionElegida != 3: #Si opcion elegida es 3 entonces termino el programa
         iniciar_sesion_screen()
         login_exitoso = logear_usuario()
         if login_exitoso:
-            pass #aca iria la pantalla de seleccion de shows
+            selecionar_shows_screen()
+            listar_shows(lista_conciertos)
+            input()
         else:
             pass
 

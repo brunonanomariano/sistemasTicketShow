@@ -1,6 +1,8 @@
 from salas import *;
 #Lista de usuarios creados
-lista_usuarios = []
+lista_usuarios = [
+    {"user": "admin", "password": "admin"}
+    ]
 
 #Creo las salas y calculo su disponibilidad
 sala_abel = crear_sala(20,9)

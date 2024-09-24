@@ -1,5 +1,25 @@
 from os import system
 
+def bienvenida_screen():
+    system("cls")
+    print("**************************************************************************************")
+    print("                                                                                      ")
+    print("              ▂▃▄▅▆▇█▓▒░ SISTEMAS TICKET SHOW ░▒▓█▇▆▅▄▃▂                      ")
+    print("                                                                                      ")
+    print("**************************************************************************************")
+    print("                                                                                      ")
+    print("   Bienvenido a SISTEMAS TICKET SHOW                                                  ")
+    print("                                                                                      ")
+    print("                                                                                      ")
+    print("   Por favor para continuar seleccione una opcion:                                    ")
+    print("                                                                                      ")
+    print("                                                                                      ")
+    print("   1- Crear usuario                                                                   ")
+    print("   2- Iniciar sesion                                                                  ")
+    print("   3- Salir                                                                           ")
+    print("                                                                                      ")
+    print("                                                                                      ")
+
 def crear_usuario_screen():
     system("cls")
     print("**************************************************************************************")

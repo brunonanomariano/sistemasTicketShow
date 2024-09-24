@@ -40,10 +40,12 @@ def calcular_disponibilidad(sala):
 ##########################################################################################################################################
 #  Funcion     : enumerar_filas
 #  Descripcion : transforma una lista de filas expresadas en numeros a una lista de filas expresadas en letras 
-#  Entrada     : cant_filas
+#  Entrada     : sala (matriz de la cual obtendra la cantidad de filas)
 #  Salida      : filas_en_letras (la lista de filas expresadas en letras A,B,C,D,....)
 ##########################################################################################################################################
-def enumerar_filas(cant_filas):
+def enumerar_filas(sala):
+
+    cant_filas = len(sala)
 
     #armo la lista de filas (expresada con indices numericos 0,1,2,3....)
     fila_en_numeros = [indice for indice in range (cant_filas)]
@@ -102,25 +104,33 @@ def imprimir_sala(sala, lista_precios, fila_en_letras, asientos):
 
 ##########################################################################################################################################
 #  Funcion     : armar_lista_precios
-#  Descripcion : genera una lista de precios dependiendo de la cantidad de filas que hay en la sala, a medida
-#                que avanzas las filas los precios van disminuyendo 
+#  Descripcion : genera una lista de precios, partiendo desde un precio base y aumentando de acuerdo a un incremento X
 #  Entrada     : cant_filas
-#                mayorPrecio (es el precio con el que se seteara la primera fila, el resto ira disminuyendo $2000)
+#                precioBase (es el precio de la ultima fila)
+#                incremento (es el precio con el que ira aumentando a medida que avancen las filas)
+#  Salida      : lista_precios (es la lista que contiene los precios de cada fila, siendo la primera fila la mas cara)
 ##########################################################################################################################################
-def armar_lista_precios(cant_filas, mayorPrecio):
+def armar_lista_precios(cant_filas, precioBase, incremento):
 
     lista_precios = []
 
-    #Seteo en la primera fila el mayor precio recibido por parametro    
-    lista_precios.append(mayorPrecio)
+    #Comienzo seteando el precio base    
+    lista_precios.append(precioBase)
 
-    precio_fila = mayorPrecio
+    precio_fila = precioBase
 
-    #Agrego los siguientes precios a la lista, resto 1 porque el primero ya lo agregue
-    #el resto de los precios que se van agregando van disminuyendo a medida que avanzas las filas    
+    #Agrego los siguientes precios a la lista hasta completar la cantidad de filas necesarias, resto 1 porque el primero ya lo agregue
+    #el resto de los precios que se van agregando van auentando a medida que avanzan las filas    
     for _ in range(cant_filas - 1):
-        precio_fila = precio_fila - 2000
+        precio_fila = precio_fila + incremento
         lista_precios.append(precio_fila)
 
+    #Una vez calculada la lista de precios la doy vuelta para mantener la relacion, 1ra fila = mas cara
+    lista_precios = lista_precios[::-1]
+
     return lista_precios
+
+
+
+print(armar_lista_precios(10,2000,5000))
     

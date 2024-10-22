@@ -11,14 +11,13 @@ from globales import lista_usuarios
 def verificar_usuario(usuario, contrasena):
  
     encontrado = False
-    for dicUsuario in lista_usuarios: #Recorro mis lista de usuarios
+    for dicUsuario in lista_usuarios:
        
-        if dicUsuario["user"] == usuario: #Comparo el usuario recibido con el que estoy leyendo de la lista
-            #Si encontre el usuario verifico si la contraseña coincide y sino ya no sigo recorriendo mas usuarios e informo si coincide o no
-            if dicUsuario["password"] == contrasena: #Si la contraseña coincide con la recibida por parametro devuelvo True
+        if dicUsuario["user"] == usuario: 
+            if dicUsuario["password"] == contrasena: 
                 encontrado = True
                 return encontrado
-            else: #Si la contraseña no concide devuelvo Falso
+            else: 
                 encontrado = False
                 return encontrado
  

@@ -1,10 +1,9 @@
 from salas import *;
-#Lista de usuarios creados
+
 lista_usuarios = [
     {"user": "admin", "password": "admin"}
     ]
 
-#Creo las salas y calculo su disponibilidad
 sala_abel = crear_sala(11,9)
 disp_abel = calcular_disponibilidad(sala_abel)
 
@@ -20,7 +19,7 @@ disp_sole = calcular_disponibilidad(sala_sole)
 sala_redhot = crear_sala(13,15)
 disp_redhot = calcular_disponibilidad(sala_redhot)
 
-#Armo la lista de shows disponibles
+
 lista_conciertos = [
     {"nombreArtista": "Abel Pintos", "fecha": "09/01/2025", "sala": sala_abel, "disponibilidadAsientos": disp_abel, "precioBase": 18000},
     {"nombreArtista": "Tan Bionica", "fecha": "30/11/2024", "sala": sala_tanBionica, "disponibilidadAsientos": disp_tanBionica, "precioBase": 15000},

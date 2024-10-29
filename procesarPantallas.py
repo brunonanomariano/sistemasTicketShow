@@ -42,8 +42,6 @@ def procesar_seleccion_shows():
 
     cantidad_conciertos = len(lista_conciertos)
     
-    #Armo la lista de opciones tomando el tamaño de la lista de conciertos, como la lista de opciones arranca desde 1
-    #mi range va de 1 hasta el largo de la lista + 1
     lista_opciones = list(range(1,cantidad_conciertos+1))
 
     opcionCorrecta = False
@@ -51,7 +49,7 @@ def procesar_seleccion_shows():
         opcion = int(input("Ingrese el show al cual desea asistir ----> "))
         opcionCorrecta = verificar_opcion(opcion, lista_opciones)
         if opcionCorrecta:
-            opcion -= 1 #La opcion elegida en realidad es una anterior porque mi lista de conciertos arranca con indice 0
+            opcion -= 1 
             if lista_conciertos[opcion]["disponibilidadAsientos"] == 0: 
                 opcionCorrecta = False
                 print("El show al cual desea asistir se encuentra agotado, por favor seleccione otra fecha")

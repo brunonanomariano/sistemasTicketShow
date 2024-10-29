@@ -11,7 +11,7 @@ import random
 def crear_sala(cant_asientos, cant_filas):
     sala = []
     for _ in range(cant_filas):
-        #creo las filas con elmentos al azar de 0 y 1 (ocupado y libre)
+    
         fila = [random.randint(0,1) for _ in range (cant_asientos)]
         sala.append(fila)
     
@@ -27,9 +27,7 @@ def calcular_disponibilidad(sala):
     
     total_disponibles = 0
 
-    #Como los asientos disponibles se representan con 1 y los ocupados con 0,
-    #entonces reduzco cada fila a una suma de unos y ceros que da como resultado la cantidad disponible
-    #y por cada fila acumulo este calculo
+
     for fila in sala:
         cant_en_fila = reduce(lambda asiento1, asiento2: asiento1 + asiento2, fila)
         total_disponibles += cant_en_fila
@@ -47,12 +45,9 @@ def enumerar_filas(sala):
 
     cant_filas = len(sala)
 
-    #armo la lista de filas (expresada con indices numericos 0,1,2,3....)
+ 
     fila_en_numeros = [indice for indice in range (cant_filas)]
 
-    #transformo la lista de filas numericas a lista de filas alphanumericas
-    #teniendo en cuenta que el caracter "A" en ascii es 65, por lo tanto
-    # 0 + 65 = "A", 1 + 65 = "B", 2 + 65 = "C", ......
     obj_fila_en_letras = map(lambda numero: chr(numero+65), fila_en_numeros)
 
     fila_en_letras = list(obj_fila_en_letras)
@@ -79,13 +74,11 @@ def imprimir_sala(sala, lista_precios, fila_en_letras, asientos):
     print(" " * (4), end=" ")
     print("_" * (76))
     
-    #Genero un indice moverme entre la lista de precios y la lista que contiene las filas en formato de letras
     indice = 0
 
     for fila in sala:
         print(fila_en_letras[indice], "| ", end= " ")        
         
-        #Imprimo el asiento con valores X (ocupado) y O (libre)
         for asiento in fila:
             if asiento == 1:
                 estado_asiento = "O"
@@ -113,19 +106,15 @@ def imprimir_sala(sala, lista_precios, fila_en_letras, asientos):
 def armar_lista_precios(cant_filas, precioBase, incremento):
 
     lista_precios = []
-
-    #Comienzo seteando el precio base    
+   
     lista_precios.append(precioBase)
 
     precio_fila = precioBase
-
-    #Agrego los siguientes precios a la lista hasta completar la cantidad de filas necesarias, resto 1 porque el primero ya lo agregue
-    #el resto de los precios que se van agregando van auentando a medida que avanzan las filas    
+   
     for _ in range(cant_filas - 1):
         precio_fila = precio_fila + incremento
         lista_precios.append(precio_fila)
 
-    #Una vez calculada la lista de precios la doy vuelta para mantener la relacion, 1ra fila = mas cara
     lista_precios = lista_precios[::-1]
 
     return lista_precios
@@ -136,9 +125,9 @@ def armar_lista_precios(cant_filas, precioBase, incremento):
 #  Entrada     : lista_shows (la lista de shows cargados en sistema)
 ##########################################################################################################################################
 def listar_shows(lista_shows):
-    i = 0 #Genero una variable indice para identificar las opciones
+    i = 0 
     for show in lista_shows:
-        i += 1 #Evito arrancar con la opcion 0
+        i += 1 
         print("                                               ____________________________________")
         print(f"""                                              | Artista: {show["nombreArtista"]}
                                           {i}   | Fecha: {show["fecha"]} 

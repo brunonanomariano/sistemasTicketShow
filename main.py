@@ -7,18 +7,13 @@ from login import *
 import random;
 from os import system
 
-#Limpio la pantalla
-system("cls")
 
-#Seleccion de ubicaciones
-#selecionar_ubicacion_screen()
-#imprimir_sala(sala, lista_precios, filas_en_letras, asientos)
-#fila, asiento = elegir_lugares(filas_en_letras,asientos)
+system("cls")
 
 
 def main():
-    opcionElegida = 0 # Seteo opcion elegida en 0 para entrar al ciclo de pantallas
-    while opcionElegida != 3: #Si opcion elegida es 3 entonces termino el programa
+    opcionElegida = 0 
+    while opcionElegida != 3: 
         bienvenida_screen()
         opcionElegida = procesar_bienvenida()
         if opcionElegida == 1:
@@ -32,7 +27,6 @@ def main():
                 listar_shows(lista_conciertos)
                 sala_elegida = procesar_seleccion_shows()
 
-                #Una vez elegido el show comienzo a armar las claves para imprimir la sala
                 sala = lista_conciertos[sala_elegida]["sala"]
                 cant_filas = len(sala)
                 precio_base = lista_conciertos[sala_elegida]["precioBase"]

@@ -7,9 +7,8 @@ from login import *
 import random;
 from os import system
 
-
-system("cls")
-
+def limpiar_pantalla():
+    system("cls")
 
 def main():
     opcionElegida = 0 

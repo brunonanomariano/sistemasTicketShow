@@ -4,11 +4,11 @@ import random
 
 def crear_sala(cant_asientos, cant_filas):
     """
-    #  Funcion     : crear_sala
-    #  Descripcion : crea una sala con la cantidad de asientos y filas especificadas, el valor de cada asientos es un valor
-    #                de 0 o 1 (0 = asiento ocupado, 1 = asiento disponible)
-    #  Entrada     : cant_asientos, cant_filas
-    #  Salida      : sala (matriz creada con la cantidad de asientos y filas recibidas)
+      Funcion     : crear_sala
+      Descripcion : crea una sala con la cantidad de asientos y filas especificadas, el valor de cada asientos es un valor
+                    de 0 o 1 (0 = asiento ocupado, 1 = asiento disponible)
+      Entrada     : cant_asientos, cant_filas
+      Salida      : sala (matriz creada con la cantidad de asientos y filas recibidas)
     """
 
     sala = []
@@ -22,10 +22,10 @@ def crear_sala(cant_asientos, cant_filas):
 
 def calcular_disponibilidad(sala):
     """
-    #  Funcion     : calcular_disponibilidad
-    #  Descripcion : calcula la cantidad de lugares disponibles de una sala basandose en el estado del asiento (1 = disponibles, 0 = ocupado)
-    #  Entrada     : sala
-    #  Salida      : cant_lugares (cantidad de lugares disponibles)
+      Funcion     : calcular_disponibilidad
+      Descripcion : calcula la cantidad de lugares disponibles de una sala basandose en el estado del asiento (1 = disponibles, 0 = ocupado)
+      Entrada     : sala
+      Salida      : cant_lugares (cantidad de lugares disponibles)
     """
         
     total_disponibles = 0
@@ -41,10 +41,10 @@ def calcular_disponibilidad(sala):
 
 def enumerar_filas(sala):
     """
-    #  Funcion     : enumerar_filas
-    #  Descripcion : transforma una lista de filas expresadas en numeros a una lista de filas expresadas en letras 
-    #  Entrada     : sala (matriz de la cual obtendra la cantidad de filas)
-    #  Salida      : filas_en_letras (la lista de filas expresadas en letras A,B,C,D,....)
+      Funcion     : enumerar_filas
+      Descripcion : transforma una lista de filas expresadas en numeros a una lista de filas expresadas en letras 
+      Entrada     : sala (matriz de la cual obtendra la cantidad de filas)
+      Salida      : filas_en_letras (la lista de filas expresadas en letras A,B,C,D,....)
     """ 
 
     cant_filas = len(sala)
@@ -62,12 +62,12 @@ def enumerar_filas(sala):
 
 def imprimir_sala(sala, lista_precios, fila_en_letras, asientos):
     """
-    #  Funcion     : imprimir_sala
-    #  Descripcion : imprimi de una forma visual con coordenadas una sala 
-    #  Entrada     : sala
-    #                lista_precios
-    #                fila_en_letras (lista que contiene las filas en formato letras A,B,C,D....)
-    #                asientos (lista que contiene la posicion de los asientos)
+      Funcion     : imprimir_sala
+      Descripcion : imprimi de una forma visual con coordenadas una sala 
+      Entrada     : sala
+                    lista_precios
+                    fila_en_letras (lista que contiene las filas en formato letras A,B,C,D....)
+                    asientos (lista que contiene la posicion de los asientos)
     """
 
     print(" " * (4), end=" ")
@@ -103,12 +103,12 @@ def imprimir_sala(sala, lista_precios, fila_en_letras, asientos):
 
 def armar_lista_precios(cant_filas, precioBase, incremento):
     """
-    #  Funcion     : armar_lista_precios
-    #  Descripcion : genera una lista de precios, partiendo desde un precio base y aumentando de acuerdo a un incremento X
-    #  Entrada     : cant_filas
-    #                precioBase (es el precio de la ultima fila)
-    #                incremento (es el precio con el que ira aumentando a medida que avancen las filas)
-    #  Salida      : lista_precios (es la lista que contiene los precios de cada fila, siendo la primera fila la mas cara)
+      Funcion     : armar_lista_precios
+      Descripcion : genera una lista de precios, partiendo desde un precio base y aumentando de acuerdo a un incremento X
+      Entrada     : cant_filas
+                    precioBase (es el precio de la ultima fila)
+                    incremento (es el precio con el que ira aumentando a medida que avancen las filas)
+      Salida      : lista_precios (es la lista que contiene los precios de cada fila, siendo la primera fila la mas cara)
     """
 
     lista_precios = []
@@ -127,9 +127,9 @@ def armar_lista_precios(cant_filas, precioBase, incremento):
 
 def listar_shows(lista_shows):
     """
-    #  Funcion     : listar_shows
-    #  Descripcion : recibe una lista de show y lista las caracteristicas del mismo
-    #  Entrada     : lista_shows (la lista de shows cargados en sistema)
+      Funcion     : listar_shows
+      Descripcion : recibe una lista de show y lista las caracteristicas del mismo
+      Entrada     : lista_shows (la lista de shows cargados en sistema)
     """
 
     i = 0 

@@ -13,6 +13,7 @@ def limpiar_pantalla():
 
 
 def main():
+    #grabar_salas()
     opcionElegida = 0 
     while opcionElegida != 3: 
         bienvenida_screen()

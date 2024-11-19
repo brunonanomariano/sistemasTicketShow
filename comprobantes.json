@@ -11,5 +11,17 @@
         ],
         "descuento": "No se aplico descuento",
         "preciotot": 66000
+    },
+    {
+        "usuario": "admin",
+        "artista": "Red Hot Chili Peppers",
+        "fecha": "30/10/2024",
+        "idcompra": "#66898045",
+        "cantentradas": 1,
+        "ubicacion": [
+            "a3"
+        ],
+        "descuento": "No se aplico descuento",
+        "preciotot": 39000
     }
 ]

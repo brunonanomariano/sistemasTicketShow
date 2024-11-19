@@ -69,6 +69,7 @@ def procesar_pago(precio_total):
         return True  
     else:
         print(" El pago ha sido cancelado. Vuelve cuando estés listo para completar la compra.")
+        input(" Presione ENTER para poder continuar...")
         return False  
 
 

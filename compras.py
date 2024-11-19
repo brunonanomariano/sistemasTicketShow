@@ -1,13 +1,14 @@
 from re import match;
 
-##########################################################################################################################################
-#  Funcion     : elegir_lugares
-#  Descripcion : se elige y valida una ubicacion ingresada por el usuario para que la misma se encuentre
-#                dentro de las opciones disponibles
-#  Entrada     : filas(lista de filas validas), asientos (lista de asientos validos)
-#  Salida      : asiento_elegido, fila_elegida (ambos en valores enteros)
-##########################################################################################################################################
+
 def elegir_lugares(filas,asientos):
+    """
+        Funcion     : elegir_lugares
+        Descripcion : se elige y valida una ubicacion ingresada por el usuario para que la misma se encuentre
+                        dentro de las opciones disponibles
+        Entrada     : filas(lista de filas validas), asientos (lista de asientos validos)
+        Salida      : asiento_elegido, fila_elegida (ambos en valores enteros)
+    """
     coordenada_incorrecta = True
 
     while coordenada_incorrecta:

@@ -1,14 +1,14 @@
 from globales import lista_usuarios  
  
-##########################################################################################################################################
-#  Funcion     : verificar_usuario
-#  Descripcion : recibe un usuario y contraseña. Valida si ese usuario está registrado en la lista de usuarios
-#  Entrada     : usuario, contraseña
-#  Salida      : True (si lo encontro)
-#                False (si no lo encontro)
-#######################################################################################################AAA###################################
- 
+
 def verificar_usuario(usuario, contrasena):
+    """
+        Funcion     : verificar_usuario
+        Descripcion : recibe un usuario y contraseña. Valida si ese usuario está registrado en la lista de usuarios
+        Entrada     : usuario, contraseña
+        Salida      : True (si lo encontro)
+                      False (si no lo encontro)
+    """
  
     encontrado = False
     for dicUsuario in lista_usuarios:
@@ -23,16 +23,14 @@ def verificar_usuario(usuario, contrasena):
  
     return encontrado
  
- 
-##########################################################################################################################################
-#  Funcion     : loguear_usuario
-#  Descripcion : solicita usuario y contraseña, verifica si existe en la lista de usuarios creados y si no existe vuelve a pedirlo
-#  Entrada     : -
-#  Salida      : False (si no pudo logearse dentro de los primeros 3 intentos)
-#                True  (si lo encontro antes de los primeros 3 intentos)
-#######################################################################################################AAA###################################
- 
 def logear_usuario():
+    """
+        Funcion     : loguear_usuario
+        Descripcion : solicita usuario y contraseña, verifica si existe en la lista de usuarios creados y si no existe vuelve a pedirlo
+        Entrada     : -
+        Salida      : False (si no pudo logearse dentro de los primeros 3 intentos)
+                      True  (si lo encontro antes de los primeros 3 intentos)
+    """
     intentos = 0
     encontrado = False
    

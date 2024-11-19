@@ -61,28 +61,32 @@ def elegir_lugares(filas,asientos,cant_tickets, show):
         coordenada_incorrecta = True
 
         while coordenada_incorrecta:
-            coordenadas = input(f"Ingrese las coordenadas de su ticket nro {i}, indicando primero la fila y luego el asiento:\n")
-            coordenada_incorrecta = verificar_coordenadas(filas, asientos, coordenadas)
+            try:
+                coordenadas = input(f"Ingrese las coordenadas de su ticket nro {i}, indicando primero la fila y luego el asiento:\n")
+                coordenada_incorrecta = verificar_coordenadas(filas, asientos, coordenadas)
 
-            if not(coordenada_incorrecta):
-                
-                fila_elegida, asiento_elegido = separar_fila_asiento(coordenadas)
-                fila_elegida_numerica = ord(fila_elegida) - 65 #paso la fila de letra a numero para transformala a un indice
+                if not(coordenada_incorrecta):
+                    
+                    fila_elegida, asiento_elegido = separar_fila_asiento(coordenadas)
+                    fila_elegida_numerica = ord(fila_elegida) - 65 #paso la fila de letra a numero para transformala a un indice
 
-                #Verifico que la ubicacion este disponible dentro de la sala
-                if show["sala"][fila_elegida_numerica][asiento_elegido] == 0:
-                    print("La ubicacion seleccionada esta ocupada, por favor ingese una ubicacion libre")
-                    coordenada_incorrecta = True
-                else:
-                    if not(coordenadas in esta_compra):
-                        esta_compra.append(coordenadas) #Guardo las coordenadas para validar duplicidad durante la compra
-                        #Guardo una lista de filas que me servira para calcular el total de la compra
-                        #ya que el precio de un asiento depende de su fila
-                        lista_fila.append(fila_elegida_numerica)
-                    else:
-                        print("Las cordenadas ya fueron elegidas en esta compra, por favor ingrese otra ubicacion disponible \n")
+                    #Verifico que la ubicacion este disponible dentro de la sala
+                    if show["sala"][fila_elegida_numerica][asiento_elegido] == 0:
+                        print("La ubicacion seleccionada esta ocupada, por favor ingese una ubicacion libre")
                         coordenada_incorrecta = True
-
+                    else:
+                        if not(coordenadas in esta_compra):
+                            esta_compra.append(coordenadas) #Guardo las coordenadas para validar duplicidad durante la compra
+                            #Guardo una lista de filas que me servira para calcular el total de la compra
+                            #ya que el precio de un asiento depende de su fila
+                            lista_fila.append(fila_elegida_numerica)
+                        else:
+                            print("Las cordenadas ya fueron elegidas en esta compra, por favor ingrese otra ubicacion disponible \n")
+                            coordenada_incorrecta = True
+            except:
+                print("El formato de las ubicaciones no es correcto, reintente nuevamente")
+                coordenada_incorrecta = True
+                
         cant_tickets -=1
 
     return lista_fila, esta_compra

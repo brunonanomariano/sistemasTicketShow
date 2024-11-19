@@ -76,17 +76,21 @@ def procesar_seleccion_shows():
                                 print("El show al cual desea asistir se encuentra agotado, por favor seleccione otra fecha")
                             else: #Verifico disponibilidad de tickets
                                 supera_ubicacicones = True
-                                cant_tickets = int(input("Ingrese la cantidad de tickets que desea comprar: "))
-                                while supera_ubicacicones == True:
-                                    if cant_tickets > lista_shows[opcion]["disponibilidadAsientos"]:
-                                        cant_tickets=int(input("La cantidad solicitada supera la disponible. Ingrese una nueva cantidad: "))
-                                        supera_ubicacicones = True
-                                    else:
-                                        supera_ubicacicones = False
+                                try:
+                                    cant_tickets = int(input("Ingrese la cantidad de tickets que desea comprar: "))
+                                    while supera_ubicacicones == True:
+                                        if cant_tickets > lista_shows[opcion]["disponibilidadAsientos"]:
+                                            cant_tickets=int(input("La cantidad solicitada supera la disponible. Ingrese una nueva cantidad: "))
+                                            supera_ubicacicones = True
+                                        else:
+                                            supera_ubicacicones = False
+                                except:
+                                    print("La cantidad ingresada debe ser un numero, por favor reintente nuevamente")
+                                    opcionCorrecta = False
                     except:
                         print("La opcion ingresada debe ser un numero, por favor reintente nuevamente")
-                        opcionCorrecta == False
-                        
+                        opcionCorrecta = False
+
                 sala_elegida = lista_shows[opcion]
 
         except Exception as e:

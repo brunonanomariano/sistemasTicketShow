@@ -121,7 +121,7 @@ def generar_comprobante(cantidad_entradas, precio_total, cupón_aplicado, ubicac
     )
 
     print(comprobante)
-
+    input("Presione ENTER para continuar")
     comprobante = {
                    "usuario": usuario, 
                    "idcompra": id_compra, 

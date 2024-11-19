@@ -73,6 +73,3 @@ def obtener_comprobantes(usuario):
     else:
         print("No se encontró archivo de comprobantes.")
         operacion_exitosa = False
-
-
-obtener_comprobantes("admin")

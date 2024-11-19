@@ -148,7 +148,7 @@ def generar_comprobante(cantidad_entradas, precio_total, cupón_aplicado, ubicac
         descuento = "No se aplicó descuento"
     
     comprobante = (
-        f"---        COMPROBANTE DE COMPRA       ---\n"
+        f"---------- COMPROBANTE DE COMPRA ---------\n"
         f"--- GRACIAS POR USAR SIST. TICKET SHOW ---\n"
         f"ID de compra: {id_compra}\n"
         f"Cantidad de entradas: {cantidad_entradas}\n"

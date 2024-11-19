@@ -51,7 +51,7 @@ def main():
                         resultado_operacion = procesar_pago(total_pagar)
                         if resultado_operacion == True:
                             marcar_asientos_ocupados(lugares_elegidos, indice_sala)
-                            generar_comprobante(cant_tickets, total_pagar, cupon_aplicado, lugares_elegidos, usuario)
+                            generar_comprobante(cant_tickets, total_pagar, cupon_aplicado, lugares_elegidos, usuario,sala_elegida["nombreArtista"],sala_elegida["fecha"])
                     elif opcion_menu_usuario == 2:
                         consultar_comprobantes_screen(usuario)
                         obtener_comprobantes(usuario)

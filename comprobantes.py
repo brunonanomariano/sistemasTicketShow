@@ -24,6 +24,8 @@ def imprimir_comprobantes(lista_comprobantes):
             f" --- GRACIAS POR USAR SIST. TICKET SHOW ---\n"
             f"                                           \n"
             f"     Usuario: {comprobante['usuario']}     \n"  
+            f"     Artista: {comprobante['artista']} \n"
+            f"     Fecha: {comprobante['fecha']}           \n"
             f"     ID de compra: {comprobante['idcompra']}\n"
             f"     Cantidad de entradas: {comprobante['cantentradas']}\n"
             f"     Ubicación: {comprobante['ubicacion']}\n"
@@ -58,6 +60,3 @@ def obtener_comprobantes(usuario):
     else:
         print("No se encontró archivo de comprobantes.")
         operacion_exitosa = False
-
-
-obtener_comprobantes("admin")

@@ -1,55 +1,15 @@
 [
     {
         "usuario": "admin",
-        "idcompra": "#55583542",
-        "cantentradas": 1,
-        "ubicacion": [
-            "c1"
-        ],
-        "descuento": "No se aplico descuento",
-        "preciotot": 37000
-    },
-    {
-        "usuario": "admin",
-        "idcompra": "#55583542",
-        "cantentradas": 1,
-        "ubicacion": [
-            "c1"
-        ],
-        "descuento": "No se aplico descuento",
-        "preciotot": 37000
-    },
-    {
-        "usuario": "admin",
-        "idcompra": "#55583542",
-        "cantentradas": 1,
-        "ubicacion": [
-            "c1"
-        ],
-        "descuento": "No se aplico descuento",
-        "preciotot": 37000
-    },
-    {
-        "usuario": "admin",
-        "idcompra": "#46098353",
+        "artista": "Twenty One Pilots",
+        "fecha": "22/12/2024",
+        "idcompra": "#97256128",
         "cantentradas": 2,
         "ubicacion": [
-            "a2",
-            "a3"
+            "b1",
+            "b2"
         ],
         "descuento": "No se aplico descuento",
-        "preciotot": 68000
-    },
-    {
-        "usuario": "admin",
-        "idcompra": "#62901403",
-        "cantentradas": 3,
-        "ubicacion": [
-            "a4",
-            "a6",
-            "a8"
-        ],
-        "descuento": "No se aplico descuento",
-        "preciotot": 81000
+        "preciotot": 66000
     }
 ]

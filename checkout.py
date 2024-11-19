@@ -87,7 +87,7 @@ def validar_tarjeta(tarjeta):
     else:
         return False
 
-def generar_comprobante(cantidad_entradas, precio_total, cupón_aplicado, ubicacion, usuario):
+def generar_comprobante(cantidad_entradas, precio_total, cupón_aplicado, ubicacion, usuario, nombreArtista, fecha):
     
     """
     Función: generar_comprobante
@@ -111,7 +111,9 @@ def generar_comprobante(cantidad_entradas, precio_total, cupón_aplicado, ubicac
         f" --- GRACIAS POR USAR SIST. TICKET SHOW ---\n"
         f"                                           \n"
         f"     Usuario: {usuario}                    \n"
-        f"     ID de compra: {id_compra}\n"
+        f"     Artista: {nombreArtista}              \n" 
+        f"     Fecha: {fecha}                         \n" 
+        f"     ID de compra: {id_compra}               \n"
         f"     Cantidad de entradas: {cantidad_entradas}\n"
         f"     Ubicación: {ubicacion}\n"
         f"     {descuento}\n"
@@ -121,9 +123,12 @@ def generar_comprobante(cantidad_entradas, precio_total, cupón_aplicado, ubicac
     )
 
     print(comprobante)
+
     input("Presione ENTER para continuar")
     comprobante = {
                    "usuario": usuario, 
+                   "artista": nombreArtista,
+                   "fecha": fecha,
                    "idcompra": id_compra, 
                    "cantentradas": cantidad_entradas, 
                    "ubicacion": ubicacion,

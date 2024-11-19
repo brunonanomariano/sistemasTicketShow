@@ -335,8 +335,8 @@
                 1
             ],
             [
-                1,
-                1,
+                0,
+                0,
                 0,
                 1,
                 1,
@@ -470,7 +470,7 @@
                 1
             ]
         ],
-        "disponibilidadAsientos": 60,
+        "disponibilidadAsientos": 58,
         "precioBase": 25000
     },
     {
@@ -638,10 +638,10 @@
             [
                 0,
                 0,
-                1,
                 0,
                 0,
-                1,
+                0,
+                0,
                 0,
                 0,
                 0,
@@ -786,7 +786,7 @@
                 1
             ]
         ],
-        "disponibilidadAsientos": 56,
+        "disponibilidadAsientos": 54,
         "precioBase": 30000
     }
 ]

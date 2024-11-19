@@ -35,21 +35,6 @@ def imprimir_comprobantes(lista_comprobantes):
 
 
 
-def filtrar_comprobantes(usuario, lista_comprobantes):
- 
-    """
-    Funcion     : filtrar_comprobantes
-    Descripcion : Filtra los comprobantes de compra de un usuario específico de una lista de comprobantes.
-    Entrada     : El nombre del usuario cuyos comprobantes se quieren obtener.
-                  Una lista de diccionarios donde cada diccionario representa un comprobante de compra.
-    Salida      :  Una lista de diccionarios con los comprobantes que corresponden al usuario especificado.
-    """
-
-    comprobantes_filtrados = filter(lambda comprobante: comprobante["usuario"] == usuario, lista_comprobantes)
-    
-    return list(comprobantes_filtrados)
-
-
 def obtener_comprobantes(usuario):
 
     """
@@ -65,7 +50,7 @@ def obtener_comprobantes(usuario):
         with open(archivo_comprobantes, "r") as archivo:
             try:
                 lista_comprobantes = json.load(archivo)
-                comprobantes_usuario = filtrar_comprobantes(usuario, lista_comprobantes)
+                comprobantes_usuario = filter(lambda comprobante: comprobante["usuario"] == usuario, lista_comprobantes)
                 imprimir_comprobantes(comprobantes_usuario)
             except json.JSONDecodeError:
                 print("Se genero un problema al obtener los comprobantes.")
@@ -73,3 +58,6 @@ def obtener_comprobantes(usuario):
     else:
         print("No se encontró archivo de comprobantes.")
         operacion_exitosa = False
+
+
+obtener_comprobantes("admin")

@@ -1,8 +1,6 @@
 from salas import *;
 
-lista_usuarios = [
-    {"user": "admin", "password": "admin"}
-    ]
+archivo_usuarios = "usuarios.json"
 
 sala_abel = crear_sala(11,9)
 disp_abel = calcular_disponibilidad(sala_abel)

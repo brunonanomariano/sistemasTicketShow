@@ -1,23 +1,82 @@
 from re import match, search
 from globales import *
+import json
+import os
 
-
-
-def existeUsuario (usuario): 
+def existe_archivo(archivo):
     """"
-      Funcion     : existeUsuario
-      Descripcion : recibe un usuario y verifica si ya existe 
-      Entrada     : usuario
-      Salida      : True (si usuario ya existe en la lista de usuarios)
-                    False (si el usuario no existe)
+      Funcion     : verificar_existencia_archivo
+      Descripcion : informa si un archivo existe o no
+      Entrada     : archivo
+      Salida      : True (si el archivo existe)
+                    False (si el archivo no existe)
+    """
+    if os.path.exists(archivo):
+        return True
+    else:
+        return False
+    
+def guardar_usuario(usuario, password, archivo_usr):
+    """"
+      Funcion     : guardar_usuario
+      Descripcion : graba un usuario en el archivo recibido como parametro 
+      Entrada     : usuario, password, archivo de usuarios
+      Salida      : True (si la grabacion fue exitosa)
+                    False (si la grabacion no pudo ser realizada)
     """
 
-    for dicUsuario in lista_usuarios: 
-        if dicUsuario["user"] == usuario: 
-            print("Lo sentimos, el usuario ingresado ya existe.")
-            return True 
+    nuevo_usuario = {"user": usuario, "password": password}
     
-    return False 
+    # Obtengo los datos del archivo si existe o trabajo desde cero
+    if existe_archivo(archivo_usr):
+        with open(archivo_usr, "r") as archivo:
+            try:
+                usuarios = json.load(archivo)
+            except json.JSONDecodeError:
+                usuarios = []
+    else:
+        usuarios = []
+    
+    # Agrego el nuevo usuario
+    usuarios.append(nuevo_usuario)
+
+    estado_operacion = True
+
+    # Intento guardar los datos actualizados en el archivo
+    try:
+        with open(archivo_usr, "w") as archivo:
+            json.dump(usuarios, archivo, indent=4)
+    except Exception as e:
+        estado_operacion = False
+    
+    return estado_operacion
+
+
+
+def existeUsuario (usuario, archivo_user): 
+    """"
+      Funcion     : existeUsuario
+      Descripcion : verifica si un usuario existe en el archivo de usuarios 
+      Entrada     : usuario, archivo de usuarios
+      Salida      : True (si usuario ya existe en el archivo)
+                    False (si el usuario no existe en el archivo)
+    """
+
+    if existe_archivo(archivo_user):
+        try:
+            with open(archivo_user, "r") as archivo:
+                usuarios = json.load(archivo)
+        except json.JSONDecodeError:
+            return False
+
+        # Buscar el usuario en la lista
+        for usuarioCargado in usuarios:
+            if usuarioCargado["user"] == usuario:
+                return True
+            else:
+                return False
+    else:
+        return False
 
 
 
@@ -76,7 +135,6 @@ def crearUsuario():
       Salida      : True = si se pudo crear el usuario y False = si no se pudo crear el usuario. 
     """
 
-
     usuarioInvalido = True 
 
     while usuarioInvalido == True: 
@@ -85,9 +143,9 @@ def crearUsuario():
         valido = validarEmail(usuario)  
 
         if valido:
-
-            usuarioInvalido = existeUsuario(usuario)  
-        
+            usuarioInvalido = existeUsuario(usuario,archivo_usuarios)
+            if usuarioInvalido == True:
+                print("El usuario ya existe. Por favor intente nuevamente...")
         else:
             usuarioInvalido = True 
             print("El email ingresado no tiene un formato válido. Por favor, intente nuevamente. ")
@@ -108,7 +166,9 @@ def crearUsuario():
 
 
          
-    usuario = {"user": usuario, "password": password}
-    lista_usuarios.append(usuario)
-
-
+    if guardar_usuario(usuario,password,archivo_usuarios):
+        print("Usuario creado exitosamente!")
+        input("Presione ENTER para volver al menu principal")
+    else:
+        print("No se pudo crear el usuario")
+        input("Presione ENTER para volver al menu principal")

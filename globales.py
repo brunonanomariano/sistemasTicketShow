@@ -30,3 +30,9 @@ lista_conciertos = [
 ]
 
 cupones_validos = {'DESCUENTO10', 'DESCUENTO20', 'OFERTA25', 'BLACKFRIDAY30'}
+
+cupones_validos = {
+    'DESCUENTO10': 10,  # 10% de descuento
+    'OFERTA20': 20,     # 20% de descuento
+    'BLACKFRIDAY30': 30 # 30% de descuento
+}

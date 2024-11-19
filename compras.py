@@ -51,16 +51,20 @@ def calcular_descuento(precio, descuento):
     
     return precio_final
 
-def validar_cupon(cupon_ingresado, cupones_validos):
-    """
-    Función: validar_cupon
-    Descripción: Valida si el cupón ingresado existe en la lista de cupones válidos.
 
-    Entrada: El código del cupón ingresado por el usuario (str) y la lista o conjunto de cupones válidos predefinidos (list o set).
-    Salida: True si el cupón es válido, False si no lo es.
+
+def aplicar_descuento(cupon_ingresado, precio_total, cupones_validos):
     """
+    Descripción: calcula y aplica el descuento basado en el cupón ingresado.
+
+    Entrada: código del cupón ingresado por el usuario, precio total de la compra, diccionario con los cupones válidos y sus respectivos descuentos.
+    Salida: Precio total con el descuento aplicado, o el precio total si el cupón no es válido.
+    """
+    # Verificar si el cupón ingresado existe en el diccionario de cupones válidos
     if cupon_ingresado in cupones_validos:
-        return True
+        descuento = cupones_validos[cupon_ingresado]  # Obtener el porcentaje de descuento
+        precioFinal = calcular_descuento(precio_total, descuento)
+        return precioFinal
     else:
         print("Cupón no válido.")
-        return False
+        return precio_total  # Si el cupón no es válido, no se aplica descuento

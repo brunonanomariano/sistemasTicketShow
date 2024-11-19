@@ -41,7 +41,11 @@ def main():
                 filas_elegidas, lugares_elegidos = elegir_lugares(fila_en_letras,lista_asientos, cant_tickets)
                 checkout_screen()
                 total_compra = calcular_total_compra(filas_elegidas, lista_precios)
-                cupon = procesar_checkout(total_compra, lugares_elegidos)
+                total_pagar, cupon_aplicado = procesar_checkout(total_compra, lugares_elegidos)
+                proceso_compra_screen()
+                resultado_operacion = procesar_pago(total_pagar)
+                if resultado_operacion == True:
+                    generar_comprobante(cant_tickets, total_pagar, cupon_aplicado, lugares_elegidos)
                 input()
             else:
                 pass

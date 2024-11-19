@@ -29,10 +29,8 @@ lista_conciertos = [
     {"nombreArtista": "Red Hot Chili Peppers", "fecha": "30/10/2024", "sala": sala_redhot, "disponibilidadAsientos": disp_redhot, "precioBase": 30000}
 ]
 
-cupones_validos = {'DESCUENTO10', 'DESCUENTO20', 'OFERTA25', 'BLACKFRIDAY30'}
-
 cupones_validos = {
-    'DESCUENTO10': 10,  # 10% de descuento
-    'OFERTA20': 20,     # 20% de descuento
-    'BLACKFRIDAY30': 30 # 30% de descuento
+    'DESC10': 0.10,
+    'DESC20': 0.20,
+    'DESC30': 0.30
 }

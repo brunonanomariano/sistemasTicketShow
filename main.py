@@ -10,6 +10,7 @@ from os import system
 def limpiar_pantalla():
     system("cls")
 
+
 def main():
     opcionElegida = 0 
     while opcionElegida != 3: 

@@ -67,7 +67,7 @@ def aplicar_descuento(cupon_ingresado, precio_total, cupones_validos):
         precioFinal = calcular_descuento(precio_total, descuento)
         return precioFinal
     else:
-        print("Cupón no válido.")
+        print("Cupón no válido. No se aplicó descuento.")
         return precio_total  # Si el cupón no es válido, no se aplica descuento
 
 
@@ -124,3 +124,39 @@ def validar_tarjeta(tarjeta):
         return True
     else:
         return False
+
+
+import random
+import string
+
+def generar_comprobante(cantidad_entradas, precio_total, cupón_aplicado, ubicación):
+    
+    """
+    Función: generar_comprobante
+    Descripción: genera un comprobante a partir de la información de la compra
+
+    Entrada: cantidad de entradas, precio total de la compra, cupón y sector (ubicación)
+    Salida: arma el comprobante con los datos proporcionados.
+    """
+        
+    # Genera un ID aleatorio para la compra
+    id_compra = f"#{random.randint(10000000, 99999999)}"
+
+    if cupón_aplicado:
+        descuento = "Descuento aplicado"
+    else:
+        descuento = "No se aplicó descuento"
+    
+    comprobante = (
+        f"---        COMPROBANTE DE COMPRA       ---\n"
+        f"--- GRACIAS POR USAR SIST. TICKET SHOW ---\n"
+        f"ID de compra: {id_compra}\n"
+        f"Cantidad de entradas: {cantidad_entradas}\n"
+        f"Ubicación: {ubicación}\n"
+        f"{descuento}\n"
+        f"Precio total: ${precio_total:.2f}\n"
+        f"-------------------------------------------"
+    )
+
+    print(comprobante)
+    return comprobante

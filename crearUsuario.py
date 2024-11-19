@@ -1,15 +1,16 @@
 from re import match, search
 from globales import *
 
-##########################################################################################################################################
-#  Funcion     : existeUsuario
-#  Descripcion : recibe un usuario y verifica si ya existe 
-#  Entrada     : usuario
-#  Salida      : True (si usuario ya existe en la lista de usuarios)
-#                False (si el usuario no existe)
-#######################################################################################################AAA###################################
+
 
 def existeUsuario (usuario): 
+    """"
+    #  Funcion     : existeUsuario
+    #  Descripcion : recibe un usuario y verifica si ya existe 
+    #  Entrada     : usuario
+    #  Salida      : True (si usuario ya existe en la lista de usuarios)
+    #                False (si el usuario no existe)
+    """
 
     for dicUsuario in lista_usuarios: 
         if dicUsuario["user"] == usuario: 
@@ -18,29 +19,30 @@ def existeUsuario (usuario):
     
     return False 
 
-##########################################################################################################################################
-#  Funcion     : validarEmail
-#  Descripcion : recibe un email y valida el formato. 
-#  Entrada     : email
-#  Salida      : none (no hay coincidencia en el patrón) u objeto coincidencia (hay match del email con el patrón)
-#######################################################################################################AAA###################################
+
 
 def validarEmail (email):  
+    """
+    #  Funcion     : validarEmail
+    #  Descripcion : recibe un email y valida el formato. 
+    #  Entrada     : email
+    #  Salida      : none (no hay coincidencia en el patrón) u objeto coincidencia (hay match del email con el patrón)
+    """
+
     patron = "[0-9a-z_-]+@[a-z]+.com" 
     resultado = match(patron, email) 
                                    
     return resultado  
 
 
-##########################################################################################################################################
-#  Funcion     : validarPassword
-#  Descripcion : recibe un password y valida el formato. 
-#  Entrada     : password
-#  Salida      : True: la clave es valida o False: la clave es invalida.
-#######################################################################################################AAA###################################
 
 def validarPassword(password):
-    
+    """
+    #  Funcion     : validarPassword
+    #  Descripcion : recibe un password y valida el formato. 
+    #  Entrada     : password
+    #  Salida      : True: la clave es valida o False: la clave es invalida.
+    """   
     patron = "[A-Z][a-zA-Z0-9#&_!%]{7}"  
                                     
     resultado = match(patron, password) 
@@ -66,16 +68,14 @@ def validarPassword(password):
  
 
 
-##########################################################################################################################################
-#  Funcion     : crearUsuario
-#  Descripcion : solicita un usuario y contraseña, validando que ambos formatos sean correctos para casí crear el usuario
-#  Entrada     : ()
-#  Salida      : True = si se pudo crear el usuario y False = si no se pudo crear el usuario. 
-##########################################################################################################################################
-
-
 def crearUsuario():  
-    
+    """
+    #  Funcion     : crearUsuario
+    #  Descripcion : solicita un usuario y contraseña, validando que ambos formatos sean correctos para casí crear el usuario
+    #  Entrada     : ()
+    #  Salida      : True = si se pudo crear el usuario y False = si no se pudo crear el usuario. 
+    """
+
 
     usuarioInvalido = True 
 

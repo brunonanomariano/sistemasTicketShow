@@ -28,3 +28,5 @@ lista_conciertos = [
     #{"nombreArtista": "Soledad Pastorutti", "fecha": "12/10/2024", "sala": sala_sole, "disponibilidadAsientos": disp_sole, "precioBase": 10000},
     {"nombreArtista": "Red Hot Chili Peppers", "fecha": "30/10/2024", "sala": sala_redhot, "disponibilidadAsientos": disp_redhot, "precioBase": 30000}
 ]
+
+cupones_validos = {'DESCUENTO10', 'DESCUENTO20', 'OFERTA25', 'BLACKFRIDAY30'}

@@ -35,3 +35,18 @@ def elegir_lugares(filas,asientos):
     fila_elegida = ord(fila) - 65
 
     return asiento_elegido, fila_elegida
+
+def calcular_descuento(precio, descuento):
+    """
+    Función: calcular_descuento
+    Descripción: Calcula el precio de una entrada aplicando un descuento.
+
+    Entrada: Precio original de la entrada y porcentaje de descuento a aplicar (float o int).
+    Salida: Precio final después de aplicar el descuento.
+    """
+    
+    descuento_monto = precio * (descuento / 100)
+    
+    precio_final = precio - descuento_monto
+    
+    return precio_final

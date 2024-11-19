@@ -32,8 +32,12 @@ def procesar_bienvenida():
     opcionCorrecta = False
 
     while opcionCorrecta == False:
-        opcion = int(input("Por favor ingrese una opcion para continuar ----> "))
-        opcionCorrecta = verificar_opcion(opcion, [1,2,3])
+        try:
+            opcion = int(input("Por favor ingrese una opcion para continuar ----> "))
+            opcionCorrecta = verificar_opcion(opcion, [1,2,3])
+        except ValueError:
+            print("La opcion ingresada no es numero, por favor ingrese una opcion en pantalla")
+            opcionCorrecta = False
         
     return opcion
 
@@ -62,22 +66,27 @@ def procesar_seleccion_shows():
 
                 opcionCorrecta = False
                 while opcionCorrecta == False:
-                    opcion = int(input("Ingrese el show al cual desea asistir ----> "))
-                    opcionCorrecta = verificar_opcion(opcion, lista_opciones)
-                    if opcionCorrecta:
-                        opcion -= 1 #Le resto 1 a la opcion para coincidir con los indices
-                        if lista_shows[opcion]["disponibilidadAsientos"] == 0: 
-                            opcionCorrecta = False
-                            print("El show al cual desea asistir se encuentra agotado, por favor seleccione otra fecha")
-                        else: #Verifico disponibilidad de tickets
-                            supera_ubicacicones = True
-                            cant_tickets = int(input("Ingrese la cantidad de tickets que desea comprar: "))
-                            while supera_ubicacicones == True:
-                                if cant_tickets > lista_shows[opcion]["disponibilidadAsientos"]:
-                                    cant_tickets=int(input("La cantidad solicitada supera la disponible. Ingrese una nueva cantidad: "))
-                                    supera_ubicacicones = True
-                                else:
-                                    supera_ubicacicones = False
+                    try:
+                        opcion = int(input("Ingrese el show al cual desea asistir ----> "))
+                        opcionCorrecta = verificar_opcion(opcion, lista_opciones)
+                        if opcionCorrecta:
+                            opcion -= 1 #Le resto 1 a la opcion para coincidir con los indices
+                            if lista_shows[opcion]["disponibilidadAsientos"] == 0: 
+                                opcionCorrecta = False
+                                print("El show al cual desea asistir se encuentra agotado, por favor seleccione otra fecha")
+                            else: #Verifico disponibilidad de tickets
+                                supera_ubicacicones = True
+                                cant_tickets = int(input("Ingrese la cantidad de tickets que desea comprar: "))
+                                while supera_ubicacicones == True:
+                                    if cant_tickets > lista_shows[opcion]["disponibilidadAsientos"]:
+                                        cant_tickets=int(input("La cantidad solicitada supera la disponible. Ingrese una nueva cantidad: "))
+                                        supera_ubicacicones = True
+                                    else:
+                                        supera_ubicacicones = False
+                    except:
+                        print("La opcion ingresada debe ser un numero, por favor reintente nuevamente")
+                        opcionCorrecta == False
+                        
                 sala_elegida = lista_shows[opcion]
 
         except Exception as e:

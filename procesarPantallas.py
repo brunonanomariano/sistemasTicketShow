@@ -4,12 +4,12 @@ from globales import *;
 
 def verificar_opcion(opcion, lista_opciones):
     """
-    #  Funcion     : verificar_opcion
-    #  Descripcion : recibe una opcion y una lista de posibles opciones e informa si la opcione es correcta o no
-    #  Entrada     : opcion
-    #                lista_opciones
-    #  Salida      : False (si la opcion no esta en la lista de opciones)
-    #                True  (si la opcion esta en la lista de opciones)
+      Funcion     : verificar_opcion
+      Descripcion : recibe una opcion y una lista de posibles opciones e informa si la opcione es correcta o no
+      Entrada     : opcion
+                   lista_opciones
+      Salida      : False (si la opcion no esta en la lista de opciones)
+                    True  (si la opcion esta en la lista de opciones)
     """
 
     if opcion in lista_opciones:
@@ -22,10 +22,10 @@ def verificar_opcion(opcion, lista_opciones):
 
 def procesar_bienvenida():
     """
-    #  Funcion     : procesar_bienvenida
-    #  Descripcion : procesa la primera pantalla espreando recibir una opcion correcta y devolviendo la opcion elegida en ese caso
-    #  Entrada     : -
-    #  Salida      : opcion (una opcion validad elegida por el usuario)
+      Funcion     : procesar_bienvenida
+      Descripcion : procesa la primera pantalla espreando recibir una opcion correcta y devolviendo la opcion elegida en ese caso
+      Entrada     : -
+      Salida      : opcion (una opcion validad elegida por el usuario)
     """
 
     opcionCorrecta = False
@@ -40,12 +40,12 @@ def procesar_bienvenida():
 
 def procesar_seleccion_shows():
     """
-    #  Funcion     : procesar_seleccion_shows
-    #  Descripcion : procesa la pantalla de seleccion de shows
-    #  Entrada     : -
-    #  Salida      : opcion (una opcion validad elegida por el usuario)
+      Funcion     : procesar_seleccion_shows
+      Descripcion : procesa la pantalla de seleccion de shows
+      Entrada     : -
+      Salida      : opcion (una opcion validad elegida por el usuario)
     """
-    
+
     cantidad_conciertos = len(lista_conciertos)
     
     lista_opciones = list(range(1,cantidad_conciertos+1))

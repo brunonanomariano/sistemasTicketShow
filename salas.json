@@ -7,11 +7,11 @@
                 0,
                 0,
                 0,
-                1,
                 0,
-                1,
                 0,
-                1,
+                0,
+                0,
+                0,
                 0,
                 1,
                 0,
@@ -154,7 +154,7 @@
                 0
             ]
         ],
-        "disponibilidadAsientos": 61,
+        "disponibilidadAsientos": 58,
         "precioBase": 18000
     },
     {
@@ -321,8 +321,8 @@
         "sala": [
             [
                 0,
-                1,
-                1,
+                0,
+                0,
                 0,
                 1,
                 0,
@@ -470,7 +470,7 @@
                 1
             ]
         ],
-        "disponibilidadAsientos": 62,
+        "disponibilidadAsientos": 60,
         "precioBase": 25000
     },
     {

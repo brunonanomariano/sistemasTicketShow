@@ -28,5 +28,28 @@
         ],
         "descuento": "No se aplico descuento",
         "preciotot": 37000
+    },
+    {
+        "usuario": "admin",
+        "idcompra": "#46098353",
+        "cantentradas": 2,
+        "ubicacion": [
+            "a2",
+            "a3"
+        ],
+        "descuento": "No se aplico descuento",
+        "preciotot": 68000
+    },
+    {
+        "usuario": "admin",
+        "idcompra": "#62901403",
+        "cantentradas": 3,
+        "ubicacion": [
+            "a4",
+            "a6",
+            "a8"
+        ],
+        "descuento": "No se aplico descuento",
+        "preciotot": 81000
     }
 ]

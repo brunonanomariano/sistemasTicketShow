@@ -1,0 +1,12 @@
+[
+    {
+        "usuario": "admin",
+        "idcompra": "#55583542",
+        "cantentradas": 1,
+        "ubicacion": [
+            "c1"
+        ],
+        "descuento": "No se aplico descuento",
+        "preciotot": 37000
+    }
+]

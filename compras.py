@@ -88,7 +88,13 @@ def elegir_lugares(filas,asientos,cant_tickets, show):
     return lista_fila, esta_compra
 
 def marcar_asientos_ocupados(lista_compras, indice_sala):
-
+    """
+        Funcion     : marcar_asientos_ocupados
+        Descripcion : marca los asientos ocupados de acuerdo de las compras realizadas dentro de una sala
+        Entrada     : listado de ubicaciones comprados, indice de sala a modificar
+        Salida      : True (si la operacion fue exitosa), False (caso contrario)
+    """
+    
     estado_operacion = True
 
     #Por cada ubicacion comprada la marco como ocupada y la grabo en el archivo

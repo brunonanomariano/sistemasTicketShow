@@ -1,6 +1,7 @@
 from globales import *;
 from compras import *;
 import random;
+from crearUsuario import *; 
 
 def calcular_descuento(precio, descuento):
     """
@@ -86,13 +87,13 @@ def validar_tarjeta(tarjeta):
     else:
         return False
 
-def generar_comprobante(cantidad_entradas, precio_total, cupón_aplicado, ubicación):
+def generar_comprobante(cantidad_entradas, precio_total, cupón_aplicado, ubicacion, usuario):
     
     """
     Función: generar_comprobante
     Descripción: genera un comprobante a partir de la información de la compra
 
-    Entrada: cantidad de entradas, precio total de la compra, cupón y sector (ubicación)
+    Entrada: cantidad de entradas, precio total de la compra, cupón, usuario y sector (ubicación)
     Salida: arma el comprobante con los datos proporcionados.
     """
         
@@ -102,16 +103,17 @@ def generar_comprobante(cantidad_entradas, precio_total, cupón_aplicado, ubicac
     if cupón_aplicado:
         descuento = "Descuento aplicado"
     else:
-        descuento = "No se aplicó descuento"
+        descuento = "No se aplico descuento"
     
     print("")
     comprobante = (
         f" ---------- COMPROBANTE DE COMPRA ---------\n"
         f" --- GRACIAS POR USAR SIST. TICKET SHOW ---\n"
         f"                                           \n"
+        f"     Usuario: {usuario}                    \n"
         f"     ID de compra: {id_compra}\n"
         f"     Cantidad de entradas: {cantidad_entradas}\n"
-        f"     Ubicación: {ubicación}\n"
+        f"     Ubicación: {ubicacion}\n"
         f"     {descuento}\n"
         f"     Precio total: ${precio_total:.2f}\n"
         f"                                            \n"
@@ -119,7 +121,38 @@ def generar_comprobante(cantidad_entradas, precio_total, cupón_aplicado, ubicac
     )
 
     print(comprobante)
-    return comprobante
+
+    comprobante = {
+                   "usuario": usuario, 
+                   "idcompra": id_compra, 
+                   "cantentradas": cantidad_entradas, 
+                   "ubicacion": ubicacion,
+                   "descuento": descuento, 
+                   "preciotot": precio_total
+                   }
+    
+    
+    if existe_archivo(archivo_comprobantes):
+        with open(archivo_comprobantes, "r") as archivo:
+            try:
+                lista_comprobantes = json.load(archivo)
+            except json.JSONDecodeError:
+                lista_comprobantes = []
+    else:
+        lista_comprobantes = []
+
+    lista_comprobantes.append(comprobante)
+
+    estado_operacion = True
+
+    # Intento guardar los datos actualizados en el archivo
+    try:
+        with open(archivo_comprobantes, "w") as archivo:
+            json.dump(lista_comprobantes, archivo, indent=4)
+    except Exception as e:
+        estado_operacion = False
+    
+    return estado_operacion 
 
 
 

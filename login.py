@@ -33,6 +33,7 @@ def logear_usuario():
         Entrada     : -
         Salida      : False (si no pudo logearse dentro de los primeros 3 intentos)
                       True  (si lo encontro antes de los primeros 3 intentos)
+                      Usuario logeado 
     """
     intentos = 0
     encontrado = False
@@ -51,6 +52,6 @@ def logear_usuario():
             intentos += 1
  
     if intentos < 3:
-        return True
+        return True, usuario
     else:
-        return False
+        return False, usuario

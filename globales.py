@@ -3,6 +3,7 @@ import json;
 
 archivo_usuarios = "usuarios.json"
 archivo_salas="salas.json"
+archivo_comprobantes="comprobantes.json"
 
 #FILAS_SALA=13
 #ASIENTOS_SALA=10
@@ -40,3 +41,5 @@ cupones_validos = {
 #def grabar_salas():
 #    with open(archivo_salas, "w") as archivo:
 #        json.dump(lista_conciertos, archivo, indent=4)
+
+

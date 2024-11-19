@@ -23,7 +23,7 @@ def main():
             crearUsuario()
         elif opcionElegida == 2:
             iniciar_sesion_screen()
-            login_exitoso = logear_usuario()
+            login_exitoso, usuario = logear_usuario()
             if login_exitoso:
                 selecionar_shows_screen()
                 listar_shows()
@@ -45,7 +45,7 @@ def main():
                 resultado_operacion = procesar_pago(total_pagar)
                 if resultado_operacion == True:
                     marcar_asientos_ocupados(lugares_elegidos, indice_sala)
-                    generar_comprobante(cant_tickets, total_pagar, cupon_aplicado, lugares_elegidos)
+                    generar_comprobante(cant_tickets, total_pagar, cupon_aplicado, lugares_elegidos, usuario)
                 input()
             else:
                 pass

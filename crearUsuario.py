@@ -138,7 +138,10 @@ def crearUsuario():
     usuarioInvalido = True 
 
     while usuarioInvalido == True: 
-        usuario = input("Ingrese una dirección de correo: ").lower()       
+        usuario = input("Ingrese una dirección de correo o presione ENTER para volver al menu principal: ").lower()       
+
+        if usuario =="":
+            return False
                                                                       
         valido = validarEmail(usuario)  
 
@@ -149,8 +152,6 @@ def crearUsuario():
         else:
             usuarioInvalido = True 
             print("El email ingresado no tiene un formato válido. Por favor, intente nuevamente. ")
-    
-
 
     passwordInvalido = True 
 
@@ -162,9 +163,6 @@ def crearUsuario():
         else:
            passwordInvalido = True 
            print("La contraseña ingresada no cumple con los requisitos. Por favor, intente nuevamente. ")
-
-
-
          
     if guardar_usuario(usuario,password,archivo_usuarios):
         print("Usuario creado exitosamente!")

@@ -24,7 +24,7 @@ def main():
             if login_exitoso:
                 selecionar_shows_screen()
                 listar_shows(lista_conciertos)
-                sala_elegida = procesar_seleccion_shows()
+                sala_elegida, cant_tickets = procesar_seleccion_shows()
 
                 sala = lista_conciertos[sala_elegida]["sala"]
                 cant_filas = len(sala)

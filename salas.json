@@ -8,7 +8,7 @@
                 0,
                 0,
                 1,
-                1,
+                0,
                 1,
                 0,
                 1,
@@ -136,7 +136,7 @@
                 0,
                 1,
                 1,
-                1
+                0
             ],
             [
                 1,
@@ -154,7 +154,7 @@
                 0
             ]
         ],
-        "disponibilidadAsientos": 65,
+        "disponibilidadAsientos": 61,
         "precioBase": 18000
     },
     {
@@ -312,7 +312,7 @@
                 1
             ]
         ],
-        "disponibilidadAsientos": 64,
+        "disponibilidadAsientos": 63,
         "precioBase": 15000
     },
     {
@@ -320,7 +320,7 @@
         "fecha": "22/12/2024",
         "sala": [
             [
-                1,
+                0,
                 1,
                 1,
                 0,
@@ -470,7 +470,7 @@
                 1
             ]
         ],
-        "disponibilidadAsientos": 63,
+        "disponibilidadAsientos": 62,
         "precioBase": 25000
     },
     {
@@ -639,7 +639,7 @@
                 0,
                 0,
                 1,
-                1,
+                0,
                 0,
                 1,
                 0,
@@ -757,7 +757,7 @@
             ],
             [
                 0,
-                1,
+                0,
                 1,
                 0,
                 0,
@@ -772,7 +772,7 @@
             ],
             [
                 0,
-                1,
+                0,
                 0,
                 1,
                 1,
@@ -781,12 +781,12 @@
                 1,
                 1,
                 1,
-                1,
-                1,
+                0,
+                0,
                 1
             ]
         ],
-        "disponibilidadAsientos": 64,
+        "disponibilidadAsientos": 60,
         "precioBase": 30000
     }
 ]

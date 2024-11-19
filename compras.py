@@ -1,4 +1,7 @@
 from re import match;
+from globales import *;
+from crearUsuario import *;
+import json;
 
 
 def separar_fila_asiento(coordenadas):
@@ -39,7 +42,7 @@ def verificar_coordenadas(filas, asientos, coordenadas):
     return invalidez
 
 
-def elegir_lugares(filas,asientos,cant_tickets):
+def elegir_lugares(filas,asientos,cant_tickets, show):
     """
         Funcion     : elegir_lugares
         Descripcion : se elige y valida una ubicacion ingresada por el usuario para que la misma se encuentre
@@ -50,29 +53,65 @@ def elegir_lugares(filas,asientos,cant_tickets):
 
     lista_fila=[]
     esta_compra=[]
-
-    print(cant_tickets)
+    i=0
 
     while cant_tickets > 0:
+        i=i+1
 
         coordenada_incorrecta = True
 
         while coordenada_incorrecta:
-            coordenadas = input("Ingrese las coordenadas que desea comprar, indicando primero la fila y luego el asiento:\n")
+            coordenadas = input(f"Ingrese las coordenadas de su ticket nro {i}, indicando primero la fila y luego el asiento:\n")
             coordenada_incorrecta = verificar_coordenadas(filas, asientos, coordenadas)
 
             if not(coordenada_incorrecta):
-                if not(coordenadas in esta_compra):
-                    esta_compra.append(coordenadas) #Guardo las coordenadas elegidas recien para validar duplicidad
-                    fila_elegida, _ = separar_fila_asiento(coordenadas)
-                    fila_elegida_numerica = ord(fila_elegida) - 65 #paso la fila de letra a numero para transformala a un indice
-                    #Guardo una lista de filas que me servira para calcular el total de la compra
-                    #ya que el precio de un asiento depende de su fila
-                    lista_fila.append(fila_elegida_numerica)
-                else:
-                    print("Las cordenadas ya fueron elegidas en esta compra, por favor ingrese otra ubicacion disponible \n")
+                
+                fila_elegida, asiento_elegido = separar_fila_asiento(coordenadas)
+                fila_elegida_numerica = ord(fila_elegida) - 65 #paso la fila de letra a numero para transformala a un indice
+
+                #Verifico que la ubicacion este disponible dentro de la sala
+                if show["sala"][fila_elegida_numerica][asiento_elegido] == 0:
+                    print("La ubicacion seleccionada esta ocupada, por favor ingese una ubicacion libre")
                     coordenada_incorrecta = True
+                else:
+                    if not(coordenadas in esta_compra):
+                        esta_compra.append(coordenadas) #Guardo las coordenadas para validar duplicidad durante la compra
+                        #Guardo una lista de filas que me servira para calcular el total de la compra
+                        #ya que el precio de un asiento depende de su fila
+                        lista_fila.append(fila_elegida_numerica)
+                    else:
+                        print("Las cordenadas ya fueron elegidas en esta compra, por favor ingrese otra ubicacion disponible \n")
+                        coordenada_incorrecta = True
 
         cant_tickets -=1
 
     return lista_fila, esta_compra
+
+def marcar_asientos_ocupados(lista_compras, indice_sala):
+
+    estado_operacion = True
+
+    #Por cada ubicacion comprada la marco como ocupada y la grabo en el archivo
+    for ubicacion in lista_compras:
+        fila_elegida, asiento_elegido = separar_fila_asiento(ubicacion)
+        fila_elegida_numerica = ord(fila_elegida.upper()) - 65
+
+        if existe_archivo(archivo_salas):
+            with open(archivo_salas, "r") as archivo:
+                try:
+                    lista_shows = json.load(archivo)
+                    lista_shows[indice_sala]["sala"][fila_elegida_numerica][asiento_elegido] = 0
+                    lista_shows[indice_sala]["disponibilidadAsientos"] -= 1
+                except json.JSONDecodeError:
+                    print("Error al acceder al archivo de salas")
+        else:
+            print("Error al acceder al archivo de salas")
+
+        try:
+            with open(archivo_salas, "w") as archivo:
+                json.dump(lista_shows, archivo, indent=4)
+        except Exception as e:
+            estado_operacion = False
+        
+    return estado_operacion
+            

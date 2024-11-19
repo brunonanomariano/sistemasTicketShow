@@ -85,7 +85,7 @@ def procesar_seleccion_shows():
     else:
         print("No existen show disponibles en este momento")
 
-    return sala_elegida, cant_tickets
+    return sala_elegida, cant_tickets, opcion
 
 
     

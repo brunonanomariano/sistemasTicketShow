@@ -93,3 +93,17 @@ def selecionar_shows_screen():
     print("  Seleccione el show al cual desea asistir:                                           ")
     print("                                                                                      ")
     print("                                                                                      ")
+
+def checkout_screen():
+    system("cls")
+    print("**************************************************************************************")
+    print("                                                                                      ")
+    print("              ▂▃▄▅▆▇█▓▒░ SISTEMAS TICKET SHOW ░▒▓█▇▆▅▄▃▂                      ")
+    print("                                                                                      ")
+    print("                              SELECCION DE SHOW                                       ")
+    print("                                                                                      ")
+    print("**************************************************************************************")
+    print("                                                                                      ")
+    print("  Resumen de compra:                                                                  ")
+    print("                                                                                      ")
+    print("                                                                                      ")

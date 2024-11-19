@@ -4,6 +4,7 @@ from pantallas import *;
 from procesarPantallas import *;
 from crearUsuario import *;
 from login import *
+from checkout import *;
 import random;
 from os import system
 
@@ -37,7 +38,11 @@ def main():
                 
                 selecionar_ubicacion_screen()
                 imprimir_sala(sala, lista_precios, fila_en_letras, lista_asientos)
-                elegir_lugares(fila_en_letras,lista_asientos)
+                filas_elegidas, lugares_elegidos = elegir_lugares(fila_en_letras,lista_asientos, cant_tickets)
+                checkout_screen()
+                total_compra = calcular_total_compra(filas_elegidas, lista_precios)
+                cupon = procesar_checkout(total_compra, lugares_elegidos)
+                input()
             else:
                 pass
 

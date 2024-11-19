@@ -45,11 +45,9 @@ def filtrar_comprobantes(usuario, lista_comprobantes):
     Salida      :  Una lista de diccionarios con los comprobantes que corresponden al usuario especificado.
     """
 
-    comprobantes_filtrados = []
-    for comprobante in lista_comprobantes:
-        if comprobante["usuario"] == usuario:
-            comprobantes_filtrados.append(comprobante)
-    return comprobantes_filtrados
+    comprobantes_filtrados = filter(lambda comprobante: comprobante["usuario"] == usuario, lista_comprobantes)
+    
+    return list(comprobantes_filtrados)
 
 
 def obtener_comprobantes(usuario):

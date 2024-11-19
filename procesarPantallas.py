@@ -44,6 +44,7 @@ def procesar_seleccion_shows():
       Descripcion : procesa la pantalla de seleccion de shows
       Entrada     : -
       Salida      : opcion (una opcion validad elegida por el usuario)
+                    cant_tickets (cantidad valida de tickets para ese show)
     """
 
     cantidad_conciertos = len(lista_conciertos)
@@ -55,12 +56,21 @@ def procesar_seleccion_shows():
         opcion = int(input("Ingrese el show al cual desea asistir ----> "))
         opcionCorrecta = verificar_opcion(opcion, lista_opciones)
         if opcionCorrecta:
-            opcion -= 1 
+            opcion -= 1 #Le resto 1 a la opcion para coincidir con los indices
             if lista_conciertos[opcion]["disponibilidadAsientos"] == 0: 
                 opcionCorrecta = False
                 print("El show al cual desea asistir se encuentra agotado, por favor seleccione otra fecha")
-             
-    return opcion
+            else: #Verifico disponibilidad de tickets
+                supera_ubicacicones = True
+                cant_tickets = int(input("Ingrese la cantidad de tickets que desea comprar: "))
+                while supera_ubicacicones == True:
+                    if cant_tickets > lista_conciertos[opcion]["disponibilidadAsientos"]:
+                        cant_tickets=int(input("La cantidad solicitada supera la disponible. Ingrese una nueva cantidad: "))
+                        supera_ubicacicones = True
+                    else:
+                        supera_ubicacicones = False
+    
+    return opcion, cant_tickets
 
 
     

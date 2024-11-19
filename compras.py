@@ -55,6 +55,7 @@ def calcular_descuento(precio, descuento):
 
 def aplicar_descuento(cupon_ingresado, precio_total, cupones_validos):
     """
+    Función: aplicar_descuento
     Descripción: calcula y aplica el descuento basado en el cupón ingresado.
 
     Entrada: código del cupón ingresado por el usuario, precio total de la compra, diccionario con los cupones válidos y sus respectivos descuentos.
@@ -68,3 +69,58 @@ def aplicar_descuento(cupon_ingresado, precio_total, cupones_validos):
     else:
         print("Cupón no válido.")
         return precio_total  # Si el cupón no es válido, no se aplica descuento
+
+
+
+
+def procesar_pago(precio_total):
+    """
+    Nombre: procesar_pago
+    Descripción: Procesa el pago de la compra utilizando tarjeta de crédito o débito.
+
+    Entrada:El precio total a pagar.
+    Salida: Un mensaje indicando si el pago fue exitoso o no.
+    """
+
+    print(f"El precio total de tu compra es: {precio_total:.2f}.")
+
+    tarjeta_valida = False
+    while not tarjeta_valida:
+        tarjeta = input("Ingresa los datos de tu tarjeta (Número de tarjeta): ")
+
+        if validar_tarjeta(tarjeta):
+            tarjeta_valida = True  
+        else:
+            print("La tarjeta tiene un formato inválido. Asegúrate de que solo contenga números y tenga entre 13 y 19 dígitos.")
+            
+            cancelar = input("¿Quieres cancelar el pago? (sí/no): ").lower()
+            if cancelar == 'sí':
+                print("El pago ha sido cancelado.")
+                return False  
+
+    confirmacion_pago = input("¿Deseas confirmar el pago de esta compra? (sí/no): ").lower()
+
+    if confirmacion_pago == 'sí':
+        print(f"Procesando el pago de {precio_total:.2f}...")
+        
+        print("¡Pago procesado exitosamente! ¡Gracias por tu compra!")
+        return True  
+    else:
+        print("El pago ha sido cancelado. Vuelve cuando estés listo para completar la compra.")
+        return False  
+
+
+
+def validar_tarjeta(tarjeta):
+    """
+    Función: validar_tarjeta
+    Descripción: Valida el formato de un número de tarjeta de crédito o débito.
+
+    Entrada: el número de tarjeta ingresado.
+    Salida: True si el formato es válido, False si no lo es.
+    """
+
+    if tarjeta.isdigit() and 13 <= len(tarjeta) <= 19:
+        return True
+    else:
+        return False

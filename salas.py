@@ -1,6 +1,7 @@
 from functools import reduce;
 import random
-
+from crearUsuario import *
+from globales import archivo_salas;
 
 def crear_sala(cant_asientos, cant_filas):
     """
@@ -125,19 +126,28 @@ def armar_lista_precios(cant_filas, precioBase, incremento):
 
     return lista_precios
 
-def listar_shows(lista_shows):
+
+def listar_shows():
     """
       Funcion     : listar_shows
-      Descripcion : recibe una lista de show y lista las caracteristicas del mismo
-      Entrada     : lista_shows (la lista de shows cargados en sistema)
+      Descripcion : abre el archivo de salas y lista los shows en pantalla
+      Entrada     : none
+      Salida      : none
     """
-
-    i = 0 
-    for show in lista_shows:
-        i += 1 
-        print("                                               ____________________________________")
-        print(f"""                                              | Artista: {show["nombreArtista"]}
+    if existe_archivo(archivo_salas):
+        try:
+            with open(archivo_salas, "r") as archivo:
+                lista_shows = json.load(archivo)
+                i = 0 
+                for show in lista_shows:
+                    i += 1 
+                    print("                                               ____________________________________")
+                    print(f"""                                              | Artista: {show["nombreArtista"]}
                                           {i}   | Fecha: {show["fecha"]} 
                                               | Lugares disponibles: {show["disponibilidadAsientos"]}
                                               | Precios desde: ${show["precioBase"]} """)
-        print("                                               ------------------------------------")
+                    print("                                               ------------------------------------")
+        except Exception as e:
+            print(f"Ocurrió un error al abrir el archivo: {e}")
+
+    

@@ -1,27 +1,30 @@
-from globales import lista_usuarios  
- 
+from globales import *;
+from crearUsuario import *;
 
-def verificar_usuario(usuario, contrasena):
+def verificar_datos (usuario, password, archivo_user): 
+    """"
+      Funcion     : verificar_datos
+      Descripcion : controla que el usuario y la pass sean correctos 
+      Entrada     : usuario, password, archivo de usuarios
+      Salida      : True (si usuario ya existe en el archivo)
+                    False (si el usuario no existe en el archivo)
     """
-        Funcion     : verificar_usuario
-        Descripcion : recibe un usuario y contraseña. Valida si ese usuario está registrado en la lista de usuarios
-        Entrada     : usuario, contraseña
-        Salida      : True (si lo encontro)
-                      False (si no lo encontro)
-    """
- 
-    encontrado = False
-    for dicUsuario in lista_usuarios:
-       
-        if dicUsuario["user"] == usuario: 
-            if dicUsuario["password"] == contrasena: 
-                encontrado = True
-                return encontrado
-            else: 
-                encontrado = False
-                return encontrado
- 
-    return encontrado
+
+    existencia_usuario = False
+    usuarios = []
+
+    if existe_archivo(archivo_user):
+        try:
+            with open(archivo_user, "r") as archivo:
+                usuarios = json.load(archivo)
+        except json.JSONDecodeError:
+            existencia_usuario = False
+
+        for usuarioCargado in usuarios:
+            if usuarioCargado["user"] == usuario and usuarioCargado["password"] == password:
+                existencia_usuario = True      
+
+    return existencia_usuario
  
 def logear_usuario():
     """
@@ -37,13 +40,14 @@ def logear_usuario():
     while intentos < 3 and not encontrado:
        
         usuario = input("Ingresa el usuario: ")
-        contraseña = input("Ingresa la contraseña: ")
+        contrasenia = input("Ingresa la contraseña: ")
        
-        if verificar_usuario(usuario, contraseña):
+        if verificar_datos(usuario, contrasenia, archivo_usuarios):
             encontrado = True
-            print("Usuario logueado correctamente")  
+            print("Usuario logueado correctamente")
+            input("Presione ENTER para continuar")
         else:
-            print("Usuario o contraseña incorrectos, intenta de nuevo.")
+            print("Usuario o contraseña incorrectos, intenta nuevamente")
             intentos += 1
  
     if intentos < 3:

@@ -1,6 +1,7 @@
 from globales import *;
 from crearUsuario import *;
-
+from pantallas import *;
+from salas import *
 
 
 def verificar_opcion(opcion, lista_opciones):
@@ -16,7 +17,6 @@ def verificar_opcion(opcion, lista_opciones):
     if opcion in lista_opciones:
         return True
     else:
-        print("La opcion ingresada no esta disponible")
         return False
     
 
@@ -35,7 +35,35 @@ def procesar_bienvenida():
         try:
             opcion = int(input("Por favor ingrese una opcion para continuar ----> "))
             opcionCorrecta = verificar_opcion(opcion, [1,2,3])
+            if opcionCorrecta == False:
+                bienvenida_screen()
+                print("La opcion ingresada no se encuentra disponible")
         except ValueError:
+            bienvenida_screen()
+            print("La opcion ingresada no es numero, por favor ingrese una opcion en pantalla")
+            opcionCorrecta = False
+        
+    return opcion
+
+def procesar_bienvenida_usuario(usuario):
+    """
+      Funcion     : procesar_bienvenida
+      Descripcion : procesa la primera pantalla espreando recibir una opcion correcta y devolviendo la opcion elegida en ese caso
+      Entrada     : -
+      Salida      : opcion (una opcion validad elegida por el usuario)
+    """
+
+    opcionCorrecta = False
+
+    while opcionCorrecta == False:
+        try:
+            opcion = int(input("Por favor ingrese una opcion para continuar ----> "))
+            opcionCorrecta = verificar_opcion(opcion, [1,2,3])
+            if opcionCorrecta == False:
+                opciones_inicio_sesion(usuario)
+                print("La opcion ingresada no se encuentra disponible")
+        except ValueError:
+            opciones_inicio_sesion(usuario)
             print("La opcion ingresada no es numero, por favor ingrese una opcion en pantalla")
             opcionCorrecta = False
         
@@ -67,27 +95,56 @@ def procesar_seleccion_shows():
                 opcionCorrecta = False
                 while opcionCorrecta == False:
                     try:
-                        opcion = int(input("Ingrese el show al cual desea asistir ----> "))
+                        opcion = input("Ingrese el show al cual desea asistir ----> ")
+                        if opcion == "":
+                            return None, None, -1
+                        
+                        opcion = int(opcion)
                         opcionCorrecta = verificar_opcion(opcion, lista_opciones)
+                        if opcionCorrecta == False:
+                            selecionar_shows_screen()
+                            listar_shows()
+                            print("La opcion solicitada no es correcta")
                         if opcionCorrecta:
                             opcion -= 1 #Le resto 1 a la opcion para coincidir con los indices
                             if lista_shows[opcion]["disponibilidadAsientos"] == 0: 
                                 opcionCorrecta = False
+                                selecionar_shows_screen()
+                                listar_shows()
                                 print("El show al cual desea asistir se encuentra agotado, por favor seleccione otra fecha")
                             else: #Verifico disponibilidad de tickets
                                 supera_ubicacicones = True
-                                try:
-                                    cant_tickets = int(input("Ingrese la cantidad de tickets que desea comprar: "))
-                                    while supera_ubicacicones == True:
-                                        if cant_tickets > lista_shows[opcion]["disponibilidadAsientos"]:
-                                            cant_tickets=int(input("La cantidad solicitada supera la disponible. Ingrese una nueva cantidad: "))
-                                            supera_ubicacicones = True
-                                        else:
-                                            supera_ubicacicones = False
-                                except:
-                                    print("La cantidad ingresada debe ser un numero, por favor reintente nuevamente")
-                                    opcionCorrecta = False
+                                cantIncorrecta = True
+                                while cantIncorrecta:
+                                    try:
+                                        cant_tickets = input("Ingrese la cantidad de tickets que desea comprar: ")
+                                        
+                                        if cant_tickets == "":
+                                            return None, None, -1
+                                        
+                                        cant_tickets = int(cant_tickets)
+                                        while supera_ubicacicones == True:
+                                            if cant_tickets > lista_shows[opcion]["disponibilidadAsientos"]:
+                                                selecionar_shows_screen()
+                                                listar_shows()
+                                                cant_tickets=int(input("La cantidad solicitada supera la disponible. Ingrese una nueva cantidad: "))
+                                                
+                                                if cant_tickets == "":
+                                                    return None, None, -1
+
+                                                cant_tickets = int(cant_tickets)    
+                                                supera_ubicacicones = True
+                                            else:
+                                                supera_ubicacicones = False
+                                                cantIncorrecta = False
+                                    except:
+                                        selecionar_shows_screen()
+                                        listar_shows()
+                                        print("La cantidad ingresada debe ser un numero, por favor reintente nuevamente")
+                                        cantIncorrecta = True
                     except:
+                        selecionar_shows_screen()
+                        listar_shows()
                         print("La opcion ingresada debe ser un numero, por favor reintente nuevamente")
                         opcionCorrecta = False
 

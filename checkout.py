@@ -2,6 +2,7 @@ from globales import *;
 from compras import *;
 import random;
 from crearUsuario import *; 
+from pantallas import *
 
 def calcular_descuento(precio, descuento):
     """
@@ -34,7 +35,7 @@ def aplicar_descuento(cupon_ingresado, precio_total, cupones_validos):
         precioFinal = calcular_descuento(precio_total, descuento)
         return precioFinal
     else:
-        print("Cupón no válido. No se aplicó descuento.")
+        print(" Cupón no válido. No se aplicó descuento.")
         return precio_total  # Si el cupón no es válido, no se aplica descuento
 
 
@@ -48,7 +49,6 @@ def procesar_pago(precio_total):
     Entrada:El precio total a pagar.
     Salida: Un mensaje indicando si el pago fue exitoso o no.
     """
-
     print(f" El precio total de tu compra es: ${precio_total:.2f}.")
 
     tarjeta_valida = False
@@ -58,9 +58,16 @@ def procesar_pago(precio_total):
         if validar_tarjeta(tarjeta):
             tarjeta_valida = True  
         else:
+            proceso_compra_screen()
+            print(f" El precio total de tu compra es: ${precio_total:.2f}.")
             print(" La tarjeta tiene un formato inválido. Asegúrate de que solo contenga números y tenga entre 13 y 19 dígitos.")
-
-    confirmacion_pago = input(" ¿Deseas confirmar el pago de esta compra? (S/N): ").upper()
+    
+    confirmacion_pago = ""
+    while confirmacion_pago != "S" and confirmacion_pago != "N":
+        proceso_compra_screen()
+        print(f" El precio total de tu compra es: ${precio_total:.2f}.")
+        print(f" Medio de pago utlizado: {tarjeta}")
+        confirmacion_pago = input(" ¿Deseas confirmar el pago de esta compra? (S/N): ").upper()
 
     if confirmacion_pago == "S":
         print(f" Procesando el pago de ${precio_total:.2f}...")
@@ -193,10 +200,33 @@ def procesar_checkout(total_compra, lugares_elegidos):
     print("")
     cupon = input(" Ingrese el cupon de descuento o presiones ENTER para continuar : ")
 
+    reintentar = True
+
     if cupon !="":
-        total_a_pagar = aplicar_descuento(cupon, total_compra, cupones_validos)
-        if total_a_pagar != total_compra:
-            print(f" Descuento aplicado, el nuevo subtotal es: ${total_a_pagar}")
+        while reintentar:
+            total_a_pagar = aplicar_descuento(cupon, total_compra, cupones_validos)
+            if total_a_pagar == total_compra:
+                respuesta = ""
+                while respuesta != "S" and respuesta != "N":
+                    checkout_screen()
+                    print(" Asientos elegidos:" ,end="")
+                    for lugar in lugares_elegidos:
+                        print(" ",lugar, end="")
+                    print("")
+                    print(f" Total de la compra: ${total_compra}")
+                    print("")
+                    print(" Cupón no válido. No se aplicó descuento.")
+                    respuesta = input(" Desea reingresar el codigo de descuento? (S/N)").upper()
+                
+                if respuesta == "S":
+                    cupon = input(" Ingrese el cupon de descuento o presiones ENTER para continuar : ")
+                    reintentar = True
+                else:
+                    reintentar = False
+
+            else:
+                print(f" Descuento aplicado, el nuevo subtotal es: ${total_a_pagar}")
+                reintentar = False
     else:
         total_a_pagar = total_compra
 

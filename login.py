@@ -1,5 +1,6 @@
 from globales import *;
 from crearUsuario import *;
+from pantallas import *
 
 def verificar_datos (usuario, password, archivo_user): 
     """"
@@ -41,13 +42,20 @@ def logear_usuario():
     while intentos < 3 and not encontrado:
        
         usuario = input("Ingresa el usuario: ")
+        if usuario == "":
+            return False, usuario
+        
         contrasenia = input("Ingresa la contraseña: ")
-       
+        if contrasenia == "":
+            return False, usuario
+        
         if verificar_datos(usuario, contrasenia, archivo_usuarios):
             encontrado = True
+            print("")
             print("Usuario logueado correctamente")
             input("Presione ENTER para continuar")
         else:
+            iniciar_sesion_screen()
             print("Usuario o contraseña incorrectos, intenta nuevamente")
             intentos += 1
  

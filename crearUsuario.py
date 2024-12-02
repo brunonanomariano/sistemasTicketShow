@@ -2,6 +2,7 @@ from re import match, search
 from globales import *
 import json
 import os
+from pantallas import *
 
 def existe_archivo(archivo):
     """"
@@ -138,7 +139,7 @@ def crearUsuario():
     usuarioInvalido = True 
 
     while usuarioInvalido == True: 
-        usuario = input("Ingrese una dirección de correo o presione ENTER para volver al menu principal: ").lower()       
+        usuario = input("Ingrese una dirección de correo: ").lower()       
 
         if usuario =="":
             return False
@@ -148,23 +149,31 @@ def crearUsuario():
         if valido:
             usuarioInvalido = existeUsuario(usuario,archivo_usuarios)
             if usuarioInvalido == True:
+                crear_usuario_screen()
                 print("El usuario ya existe. Por favor intente nuevamente...")
         else:
-            usuarioInvalido = True 
+            usuarioInvalido = True
+            crear_usuario_screen()
             print("El email ingresado no tiene un formato válido. Por favor, intente nuevamente. ")
 
     passwordInvalido = True 
 
     while passwordInvalido == True: 
-        password = input("Ingrese la contraseña: ") 
+        password = input("Ingrese la contraseña: ")
+        
+        if password =="":
+            return False
+        
         valida = validarPassword(password) 
         if valida: 
             passwordInvalido = False 
         else:
-           passwordInvalido = True 
+           passwordInvalido = True
+           crear_usuario_screen() 
            print("La contraseña ingresada no cumple con los requisitos. Por favor, intente nuevamente. ")
          
     if guardar_usuario(usuario,password,archivo_usuarios):
+        print("")
         print("Usuario creado exitosamente!")
         input("Presione ENTER para volver al menu principal")
     else:

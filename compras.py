@@ -2,7 +2,7 @@ from re import match;
 from globales import *;
 from crearUsuario import *;
 import json;
-
+from salas import *
 
 def separar_fila_asiento(coordenadas):
     """
@@ -22,7 +22,7 @@ def verificar_coordenadas(filas, asientos, coordenadas):
         Funcion      : verificar_coordenadas
         Descripcion  : recibe un lista de filas y de asientos, y verifica que las coordenadas ingresadas sean validas
         Entrada      : filas, coordenadas
-        Salida       : invalidez (True si las coordanadas no son validas, false si las coordenadas son validas)
+        Salida       : invalidez (1= no esta en pantalla, 2= formato invalido, 0= ubicacion ok)
     """
     patron = "^[a-zA-Z][0-9]{1,2}$"
     coincide = match(patron,coordenadas)
@@ -31,18 +31,16 @@ def verificar_coordenadas(filas, asientos, coordenadas):
         fila, asiento = separar_fila_asiento(coordenadas)
 
         if not(fila in filas) or not(asiento in asientos):
-            print("Las coordenadas ingresadas no se encuentran en pantalla")
-            invalidez = True
+            invalidez = 1
         else:
-            invalidez = False
+            invalidez = 0
     else: 
-        print("Las coordenadas ingresadas no poseen un formato valido")
-        invalidez = True
+        invalidez = 2
 
     return invalidez
 
 
-def elegir_lugares(filas,asientos,cant_tickets, show):
+def elegir_lugares(filas,asientos,cant_tickets, show, lista_precios):
     """
         Funcion     : elegir_lugares
         Descripcion : se elige y valida una ubicacion ingresada por el usuario para que la misma se encuentre
@@ -60,10 +58,22 @@ def elegir_lugares(filas,asientos,cant_tickets, show):
 
         coordenada_incorrecta = True
 
+        selecionar_ubicacion_screen()
+        imprimir_sala(show["sala"], lista_precios, filas, asientos)
+
         while coordenada_incorrecta:
             try:
-                coordenadas = input(f"Ingrese las coordenadas de su ticket nro {i}, indicando primero la fila y luego el asiento:\n")
+                coordenadas = input(f"Ingrese las coordenadas de su ticket nro {i}, indicando primero la fila y luego el asiento:\n").upper()
                 coordenada_incorrecta = verificar_coordenadas(filas, asientos, coordenadas)
+
+                if coordenada_incorrecta == 1:
+                    selecionar_ubicacion_screen()
+                    imprimir_sala(show["sala"], lista_precios, filas, asientos)
+                    print("Las coordenadas ingresadas no se encuentran en pantalla")
+                elif coordenada_incorrecta == 2:
+                    selecionar_ubicacion_screen()
+                    imprimir_sala(show["sala"], lista_precios, filas, asientos)
+                    print("Las coordenadas ingresadas no poseen un formato valido")
 
                 if not(coordenada_incorrecta):
                     
@@ -72,6 +82,8 @@ def elegir_lugares(filas,asientos,cant_tickets, show):
 
                     #Verifico que la ubicacion este disponible dentro de la sala
                     if show["sala"][fila_elegida_numerica][asiento_elegido] == 0:
+                        selecionar_ubicacion_screen()
+                        imprimir_sala(show["sala"], lista_precios, filas, asientos)
                         print("La ubicacion seleccionada esta ocupada, por favor ingese una ubicacion libre")
                         coordenada_incorrecta = True
                     else:
@@ -81,9 +93,13 @@ def elegir_lugares(filas,asientos,cant_tickets, show):
                             #ya que el precio de un asiento depende de su fila
                             lista_fila.append(fila_elegida_numerica)
                         else:
-                            print("Las cordenadas ya fueron elegidas en esta compra, por favor ingrese otra ubicacion disponible \n")
+                            selecionar_ubicacion_screen()
+                            imprimir_sala(show["sala"], lista_precios, filas, asientos)
+                            print(f"Las cordenadas '{coordenadas}' ya fueron elegidas en esta compra, por favor ingrese otra ubicacion disponible \n")
                             coordenada_incorrecta = True
             except:
+                selecionar_ubicacion_screen()
+                imprimir_sala(show["sala"], lista_precios, filas, asientos)
                 print("El formato de las ubicaciones no es correcto, reintente nuevamente")
                 coordenada_incorrecta = True
                 

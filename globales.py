@@ -5,6 +5,9 @@ archivo_usuarios = "usuarios.json"
 archivo_salas="salas.json"
 archivo_comprobantes="comprobantes.json"
 
+OCUPADO = 0
+LIBRE = 1
+
 cupones_validos = {
     'DESC10': 0.10,
     'DESC20': 0.20,

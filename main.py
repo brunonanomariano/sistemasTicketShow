@@ -1,4 +1,5 @@
 from salas import *;
+from globales import *;
 from compras import *;
 from pantallas import *;
 from procesarPantallas import *;
@@ -7,6 +8,7 @@ from login import *
 from checkout import *;
 import random;
 from comprobantes import *;
+from cancelacion import *;
 from os import system
 
 def limpiar_pantalla():
@@ -27,7 +29,7 @@ def main():
             login_exitoso, usuario = logear_usuario()
             if login_exitoso:
                 opcion_menu_usuario = 0
-                while opcion_menu_usuario != 3:
+                while opcion_menu_usuario != 4:
                     opciones_inicio_sesion(usuario)
                     opcion_menu_usuario = procesar_bienvenida_usuario(usuario)
                     if opcion_menu_usuario == 1:
@@ -51,12 +53,15 @@ def main():
                             proceso_compra_screen()
                             resultado_operacion = procesar_pago(total_pagar)
                             if resultado_operacion == True:
-                                marcar_asientos_ocupados(lugares_elegidos, indice_sala)
-                                generar_comprobante(cant_tickets, total_pagar, cupon_aplicado, lugares_elegidos, usuario,sala_elegida["nombreArtista"],sala_elegida["fecha"])
+                                marcar_asientos(lugares_elegidos, indice_sala, OCUPADO)
+                                generar_comprobante(cant_tickets, total_pagar, cupon_aplicado, lugares_elegidos, usuario,sala_elegida["nombreArtista"],sala_elegida["fecha"], indice_sala)
                     elif opcion_menu_usuario == 2:
                         consultar_comprobantes_screen(usuario)
                         obtener_comprobantes(usuario)
-                        input("Presion ENTER para volver al menu principal")
+                        input("Presione ENTER para volver al menu principal")
+                    elif opcion_menu_usuario == 3:
+                        procesar_cancelacion(usuario)
+                        input("Presione ENTER para volver al menu principal")
             else:
                 pass
 

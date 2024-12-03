@@ -58,7 +58,7 @@ def procesar_bienvenida_usuario(usuario):
     while opcionCorrecta == False:
         try:
             opcion = int(input("Por favor ingrese una opcion para continuar ----> "))
-            opcionCorrecta = verificar_opcion(opcion, [1,2,3])
+            opcionCorrecta = verificar_opcion(opcion, [1,2,3,4])
             if opcionCorrecta == False:
                 opciones_inicio_sesion(usuario)
                 print("La opcion ingresada no se encuentra disponible")

@@ -107,7 +107,7 @@ def elegir_lugares(filas,asientos,cant_tickets, show, lista_precios):
 
     return lista_fila, esta_compra
 
-def marcar_asientos_ocupados(lista_compras, indice_sala):
+def marcar_asientos(lista_compras, indice_sala, estado):
     """
         Funcion     : marcar_asientos_ocupados
         Descripcion : marca los asientos ocupados de acuerdo de las compras realizadas dentro de una sala
@@ -126,8 +126,12 @@ def marcar_asientos_ocupados(lista_compras, indice_sala):
             with open(archivo_salas, "r") as archivo:
                 try:
                     lista_shows = json.load(archivo)
-                    lista_shows[indice_sala]["sala"][fila_elegida_numerica][asiento_elegido] = 0
-                    lista_shows[indice_sala]["disponibilidadAsientos"] -= 1
+                    if estado == 0:
+                        lista_shows[indice_sala]["sala"][fila_elegida_numerica][asiento_elegido] = 0
+                        lista_shows[indice_sala]["disponibilidadAsientos"] -= 1
+                    if estado == 1:
+                        lista_shows[indice_sala]["sala"][fila_elegida_numerica][asiento_elegido] = 1
+                        lista_shows[indice_sala]["disponibilidadAsientos"] += 1
                 except json.JSONDecodeError:
                     print("Error al acceder al archivo de salas")
         else:

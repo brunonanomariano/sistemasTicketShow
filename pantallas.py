@@ -44,17 +44,17 @@ def crear_usuario_screen():
 
 def selecionar_ubicacion_screen():
     system("cls")
-    print("**************************************************************************************")
+    print("***********************************************************************************************************")
     print("                                                                                      ")
-    print("              ▂▃▄▅▆▇█▓▒░ SISTEMAS TICKET SHOW ░▒▓█▇▆▅▄▃▂                      ")
+    print("                             ▂▃▄▅▆▇█▓▒░ SISTEMAS TICKET SHOW ░▒▓█▇▆▅▄▃▂                      ")
     print("                                                                                      ")
-    print("                            SELECCION DE UBICACIONES                                  ")
+    print("                                      SELECCION DE UBICACIONES                                  ")
     print("                                                                                      ")
-    print("**************************************************************************************")
+    print("***********************************************************************************************************")
     print("                                                                                      ")
-    print("   ╔════════════════════════════════════════════════════════════════════════════╗     ")
-    print("                          S    T    A    G    E                                       ")
-    print("   ╚════════════════════════════════════════════════════════════════════════════╝     ")
+    print("   ╔════════════════════════════════════════════════════════════════════════════════════════════════════╗     ")
+    print("                                S        T        A        G        E                                       ")
+    print("   ╚════════════════════════════════════════════════════════════════════════════════════════════════════╝     ")
     print("                                                                                      ")
     print("                                                                                      ")
 
@@ -134,7 +134,8 @@ def opciones_inicio_sesion(usuario):
     print("                                                                                      ")
     print("   1- Comprar entradas                                                                ")
     print("   2- Consultar comprobantes                                                          ")
-    print("   3- Salir                                                                           ")
+    print("   3- Cancelar compra                                                                 ")
+    print("   4- Salir                                                                           ")
     print("                                                                                      ") 
 
 def consultar_comprobantes_screen(usuario):
@@ -151,4 +152,19 @@ def consultar_comprobantes_screen(usuario):
     print("                                                                                      ")
     print("   A continuacion se detallan las compras realizadas                                  ") 
     print("                                                                                      ")
+    print("                                                                                      ")
+
+
+def cancelaciones_screen(usuario):
+    system("cls")
+    print("**************************************************************************************")
+    print("                                                                                      ")
+    print("              ▂▃▄▅▆▇█▓▒░ SISTEMAS TICKET SHOW ░▒▓█▇▆▅▄▃▂                      ")
+    print("                                                                                      ")
+    print("                              CANCELACIONES                                           ")
+    print("                                                                                      ")
+    print("**************************************************************************************")
+    print("                                                                                      ")
+    print(f"  Bienvenido {usuario}:                                                               ")
+    print("                                                                                      ") 
     print("                                                                                      ")   

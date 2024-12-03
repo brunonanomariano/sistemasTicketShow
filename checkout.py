@@ -95,7 +95,7 @@ def validar_tarjeta(tarjeta):
     else:
         return False
 
-def generar_comprobante(cantidad_entradas, precio_total, cupón_aplicado, ubicacion, usuario, nombreArtista, fecha):
+def generar_comprobante(cantidad_entradas, precio_total, cupón_aplicado, ubicacion, usuario, nombreArtista, fecha, indiceSala):
     
     """
     Función: generar_comprobante
@@ -126,6 +126,7 @@ def generar_comprobante(cantidad_entradas, precio_total, cupón_aplicado, ubicac
         f"     Ubicación: {ubicacion}\n"
         f"     {descuento}\n"
         f"     Precio total: ${precio_total:.2f}\n"
+        f"     Estado: APROBADO\n"
         f"                                            \n"
         f"--------------------------------------------"
     )
@@ -141,7 +142,9 @@ def generar_comprobante(cantidad_entradas, precio_total, cupón_aplicado, ubicac
                    "cantentradas": cantidad_entradas, 
                    "ubicacion": ubicacion,
                    "descuento": descuento, 
-                   "preciotot": precio_total
+                   "preciotot": precio_total,
+                   "estado": "APROBADO",
+                   "indiceSala": indiceSala
                    }
     
     

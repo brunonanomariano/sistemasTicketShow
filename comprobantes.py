@@ -19,21 +19,41 @@ def imprimir_comprobantes(lista_comprobantes):
 
         print("")
         print("")
-        print(
-            f" ---------- COMPROBANTE DE COMPRA ---------\n"
-            f" --- GRACIAS POR USAR SIST. TICKET SHOW ---\n"
-            f"                                           \n"
-            f"     Usuario: {comprobante['usuario']}     \n"  
-            f"     Artista: {comprobante['artista']} \n"
-            f"     Fecha: {comprobante['fecha']}           \n"
-            f"     ID de compra: {comprobante['idcompra']}\n"
-            f"     Cantidad de entradas: {comprobante['cantentradas']}\n"
-            f"     Ubicación: {comprobante['ubicacion']}\n"
-            f"     {comprobante['descuento']}\n"
-            f"     Precio total: ${comprobante['preciotot']:.2f}\n"
-            f"                                            \n"
-            f"--------------------------------------------"
-        )
+        if comprobante["estado"] == "APROBADO":
+            print(
+                f" ---------- COMPROBANTE DE COMPRA ---------\n"
+                f" --- GRACIAS POR USAR SIST. TICKET SHOW ---\n"
+                f"                                           \n"
+                f"     Usuario: {comprobante['usuario']}     \n"  
+                f"     Artista: {comprobante['artista']} \n"
+                f"     Fecha: {comprobante['fecha']}           \n"
+                f"     ID de compra: {comprobante['idcompra']}\n"
+                f"     Cantidad de entradas: {comprobante['cantentradas']}\n"
+                f"     Ubicación: {comprobante['ubicacion']}\n"
+                f"     {comprobante['descuento']}\n"
+                f"     Precio total: ${comprobante['preciotot']:.2f}\n"
+                f"     Estado: {comprobante['estado']}       \n"
+                f"                                            \n"
+                f"--------------------------------------------"
+            )
+        else:
+            print(
+                f" ---------- COMPROBANTE DE COMPRA ---------\n"
+                f" --- GRACIAS POR USAR SIST. TICKET SHOW ---\n"
+                f"                                           \n"
+                f"     Usuario: {comprobante['usuario']}     \n"  
+                f"     Artista: {comprobante['artista']} \n"
+                f"     Fecha: {comprobante['fecha']}           \n"
+                f"     ID de compra: {comprobante['idcompra']}\n"
+                f"     Cantidad de entradas: {comprobante['cantentradas']}\n"
+                f"     Ubicación: {comprobante['ubicacion']}\n"
+                f"     {comprobante['descuento']}\n"
+                f"     Precio total: - \n"
+                f"     Estado: {comprobante['estado']}       \n"
+                f"                                            \n"
+                f"--------------------------------------------"
+            )
+
 
 
 

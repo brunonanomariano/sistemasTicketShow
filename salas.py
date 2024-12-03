@@ -72,13 +72,13 @@ def imprimir_sala(sala, lista_precios, fila_en_letras, asientos):
     """
 
     print(" " * (4), end=" ")
-    print("_" * (76))
+    print("_" * (90))
 
     for posicion in asientos:
         print(" " * 4, str(posicion+1), end=" ")
     print()    
     print(" " * (4), end=" ")
-    print("_" * (76))
+    print("_" * (90))
     
     indice = 0
 
@@ -98,7 +98,7 @@ def imprimir_sala(sala, lista_precios, fila_en_letras, asientos):
         indice += 1
 
     print("")
-    print("**************************************************************************************")
+    print("***********************************************************************************************************")
     print()
 
 

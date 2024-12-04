@@ -1,7 +1,9 @@
 from globales import *;
 from crearUsuario import *; 
 import json;
+from colorama import init, Fore, Back, Style
 
+init(autoreset=True)
 
 
 def imprimir_comprobantes(lista_comprobantes):
@@ -21,37 +23,37 @@ def imprimir_comprobantes(lista_comprobantes):
         print("")
         if comprobante["estado"] == "APROBADO":
             print(
-                f" ---------- COMPROBANTE DE COMPRA ---------\n"
-                f" --- GRACIAS POR USAR SIST. TICKET SHOW ---\n"
+                f" {Fore.LIGHTCYAN_EX}---------- COMPROBANTE DE COMPRA ---------\n"
+                f" --- GRACIAS POR USAR SIST. TICKET SHOW ---{Style.RESET_ALL}\n"
                 f"                                           \n"
-                f"     Usuario: {comprobante['usuario']}     \n"  
-                f"     Artista: {comprobante['artista']} \n"
-                f"     Fecha: {comprobante['fecha']}           \n"
-                f"     ID de compra: {comprobante['idcompra']}\n"
-                f"     Cantidad de entradas: {comprobante['cantentradas']}\n"
-                f"     Ubicación: {comprobante['ubicacion']}\n"
+                f"     {Fore.BLUE}Usuario:{Style.RESET_ALL} {Style.BRIGHT}{comprobante['usuario']}{Style.RESET_ALL}     \n"  
+                f"     {Fore.BLUE}Artista:{Style.RESET_ALL} {Style.BRIGHT}{comprobante['artista']}{Style.RESET_ALL} \n"
+                f"     {Fore.BLUE}Fecha:{Style.RESET_ALL} {Style.BRIGHT}{comprobante['fecha']}{Style.RESET_ALL}           \n"
+                f"     {Fore.BLUE}ID de compra:{Style.RESET_ALL} {Fore.MAGENTA}{comprobante['idcompra']}\n"
+                f"     {Fore.BLUE}Cantidad de entradas:{Style.RESET_ALL} {comprobante['cantentradas']}\n"
+                f"     {Fore.BLUE}Ubicación:{Style.RESET_ALL} {comprobante['ubicacion']}\n"
                 f"     {comprobante['descuento']}\n"
-                f"     Precio total: ${comprobante['preciotot']:.2f}\n"
-                f"     Estado: {comprobante['estado']}       \n"
+                f"     {Fore.BLUE}Precio total:{Style.RESET_ALL} {Style.BRIGHT}${comprobante['preciotot']:.2f}{Style.RESET_ALL}\n"
+                f"     {Fore.BLUE}Estado:{Style.RESET_ALL} {Fore.GREEN}{comprobante['estado']}{Style.RESET_ALL}       \n"
                 f"                                            \n"
-                f"--------------------------------------------"
+                f"{Fore.LIGHTCYAN_EX}--------------------------------------------{Style.RESET_ALL}"
             )
         else:
             print(
-                f" ---------- COMPROBANTE DE COMPRA ---------\n"
-                f" --- GRACIAS POR USAR SIST. TICKET SHOW ---\n"
+                f" {Fore.LIGHTCYAN_EX}---------- COMPROBANTE DE COMPRA ---------\n"
+                f" --- GRACIAS POR USAR SIST. TICKET SHOW ---{Style.RESET_ALL}\n"
                 f"                                           \n"
-                f"     Usuario: {comprobante['usuario']}     \n"  
-                f"     Artista: {comprobante['artista']} \n"
-                f"     Fecha: {comprobante['fecha']}           \n"
-                f"     ID de compra: {comprobante['idcompra']}\n"
-                f"     Cantidad de entradas: {comprobante['cantentradas']}\n"
-                f"     Ubicación: {comprobante['ubicacion']}\n"
+                f"     {Fore.BLUE}Usuario:{Style.RESET_ALL} {comprobante['usuario']}     \n"  
+                f"     {Fore.BLUE}Artista:{Style.RESET_ALL} {comprobante['artista']} \n"
+                f"     {Fore.BLUE}Fecha:{Style.RESET_ALL} {comprobante['fecha']}           \n"
+                f"     {Fore.BLUE}ID de compra:{Style.RESET_ALL} {Fore.MAGENTA}{comprobante['idcompra']}\n"
+                f"     {Fore.BLUE}Cantidad de entradas:{Style.RESET_ALL} {comprobante['cantentradas']}\n"
+                f"     {Fore.BLUE}Ubicación:{Style.RESET_ALL} {comprobante['ubicacion']}\n"
                 f"     {comprobante['descuento']}\n"
-                f"     Precio total: - \n"
-                f"     Estado: {comprobante['estado']}       \n"
+                f"     {Fore.BLUE}Precio total:{Style.RESET_ALL} - \n"
+                f"     {Fore.BLUE}Estado:{Style.RESET_ALL} {Fore.RED}{comprobante['estado']}{Style.RESET_ALL}       \n"
                 f"                                            \n"
-                f"--------------------------------------------"
+                f"{Fore.LIGHTCYAN_EX}--------------------------------------------{Style.RESET_ALL}"
             )
 
 
@@ -75,8 +77,8 @@ def obtener_comprobantes(usuario):
                 comprobantes_usuario = filter(lambda comprobante: comprobante["usuario"] == usuario, lista_comprobantes)
                 imprimir_comprobantes(comprobantes_usuario)
             except json.JSONDecodeError:
-                print("Se genero un problema al obtener los comprobantes.")
+                print(f"{Fore.RED}Se genero un problema al obtener los comprobantes.")
                 operacion_exitosa = False
     else:
-        print("No se encontró archivo de comprobantes.")
+        print(f"{Fore.RED}No se encontró archivo de comprobantes.")
         operacion_exitosa = False

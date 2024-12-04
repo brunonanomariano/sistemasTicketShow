@@ -3,6 +3,10 @@ from crearUsuario import *;
 from pantallas import *;
 from salas import *
 
+from colorama import init, Fore, Back, Style
+
+init(autoreset=True)
+
 
 def verificar_opcion(opcion, lista_opciones):
     """
@@ -37,10 +41,10 @@ def procesar_bienvenida():
             opcionCorrecta = verificar_opcion(opcion, [1,2,3])
             if opcionCorrecta == False:
                 bienvenida_screen()
-                print("La opcion ingresada no se encuentra disponible")
+                print(f"{Fore.RED}La opcion ingresada no se encuentra disponible")
         except ValueError:
             bienvenida_screen()
-            print("La opcion ingresada no es numero, por favor ingrese una opcion en pantalla")
+            print(f"{Fore.RED}La opcion ingresada no es numero, por favor ingrese una opcion en pantalla")
             opcionCorrecta = False
         
     return opcion
@@ -61,10 +65,10 @@ def procesar_bienvenida_usuario(usuario):
             opcionCorrecta = verificar_opcion(opcion, [1,2,3,4])
             if opcionCorrecta == False:
                 opciones_inicio_sesion(usuario)
-                print("La opcion ingresada no se encuentra disponible")
+                print(f"{Fore.RED}La opcion ingresada no se encuentra disponible")
         except ValueError:
             opciones_inicio_sesion(usuario)
-            print("La opcion ingresada no es numero, por favor ingrese una opcion en pantalla")
+            print(f"{Fore.RED}La opcion ingresada no es numero, por favor ingrese una opcion en pantalla")
             opcionCorrecta = False
         
     return opcion
@@ -104,14 +108,14 @@ def procesar_seleccion_shows():
                         if opcionCorrecta == False:
                             selecionar_shows_screen()
                             listar_shows()
-                            print("La opcion solicitada no es correcta")
+                            print(f"{Fore.RED}La opcion solicitada no es correcta")
                         if opcionCorrecta:
                             opcion -= 1 #Le resto 1 a la opcion para coincidir con los indices
                             if lista_shows[opcion]["disponibilidadAsientos"] == 0: 
                                 opcionCorrecta = False
                                 selecionar_shows_screen()
                                 listar_shows()
-                                print("El show al cual desea asistir se encuentra agotado, por favor seleccione otra fecha")
+                                print(f"{Fore.RED}El show al cual desea asistir se encuentra agotado, por favor seleccione otra fecha")
                             else: #Verifico disponibilidad de tickets
                                 supera_ubicacicones = True
                                 cantIncorrecta = True
@@ -127,7 +131,7 @@ def procesar_seleccion_shows():
                                             if cant_tickets > lista_shows[opcion]["disponibilidadAsientos"]:
                                                 selecionar_shows_screen()
                                                 listar_shows()
-                                                cant_tickets=int(input("La cantidad solicitada supera la disponible. Ingrese una nueva cantidad: "))
+                                                cant_tickets=int(input(f"{Fore.RED}La cantidad solicitada supera la disponible. Ingrese una nueva cantidad: "))
                                                 
                                                 if cant_tickets == "":
                                                     return None, None, -1
@@ -140,12 +144,12 @@ def procesar_seleccion_shows():
                                     except:
                                         selecionar_shows_screen()
                                         listar_shows()
-                                        print("La cantidad ingresada debe ser un numero, por favor reintente nuevamente")
+                                        print(f"{Fore.RED}La cantidad ingresada debe ser un numero, por favor reintente nuevamente")
                                         cantIncorrecta = True
                     except:
                         selecionar_shows_screen()
                         listar_shows()
-                        print("La opcion ingresada debe ser un numero, por favor reintente nuevamente")
+                        print(f"{Fore.RED}La opcion ingresada debe ser un numero, por favor reintente nuevamente")
                         opcionCorrecta = False
 
                 sala_elegida = lista_shows[opcion]
@@ -153,7 +157,7 @@ def procesar_seleccion_shows():
         except Exception as e:
             print(f"Ocurrió un error al abrir el archivo: {e}")
     else:
-        print("No existen show disponibles en este momento")
+        print(f"{Fore.RED}No existen show disponibles en este momento")
 
     return sala_elegida, cant_tickets, opcion
 

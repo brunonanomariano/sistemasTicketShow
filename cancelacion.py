@@ -4,6 +4,9 @@ import json;
 from pantallas import *
 from compras import *
 from globales import *
+from colorama import init, Fore, Back, Style
+
+init(autoreset=True)
 
 def recuperar_comprobante(usuario, id):
     """
@@ -25,10 +28,10 @@ def recuperar_comprobante(usuario, id):
                         compra_a_cancelar = comprobante
 
             except json.JSONDecodeError:
-                print("Se genero un problema al obtener los comprobantes.")
+                print(f"{Fore.RED}Se genero un problema al obtener los comprobantes.")
                 operacion_exitosa = False
     else:
-        print("No se encontró archivo de comprobantes.")
+        print(f"{Fore.RED}No se encontró archivo de comprobantes.")
         operacion_exitosa = False
 
     return compra_a_cancelar
@@ -68,16 +71,16 @@ def actualizar_comprobantes(usuario, id):
                             comprobante["estado"] = "CANCELADO"
                             actualizar = True
             except json.JSONDecodeError:
-                print("Error al acceder al archivo de comprobantes")
+                print(f"{Fore.RED}Error al acceder al archivo de comprobantes")
     else:
-        print("Error al acceder al archivo de salas")
+        print(f"{Fore.RED}Error al acceder al archivo de salas")
 
     try:
         if actualizar == True:
             with open(archivo_comprobantes, "w") as archivo:
                 json.dump(lista_comprobantes, archivo, indent=4)
     except Exception as e:
-        print(f" Error {e} al actualizar el archivo de comprobantes")
+        print(f"{Fore.RED} Error {e} al actualizar el archivo de comprobantes")
     
 def procesar_cancelacion(usuario):
     """
@@ -105,15 +108,15 @@ def procesar_cancelacion(usuario):
             marcar_asientos(asientos, sala, LIBRE)
             actualizar_comprobantes(usuario, id)
             print()
-            print(f"La compra con el id {id} se ha cancelada exitosamente!")
+            print(f"{Fore.GREEN}La compra con el id {id} se ha cancelada exitosamente!")
             cancelar = True
 
     elif comprobante_recuperado and comprobante_recuperado["estado"] == "CANCELADO":
-        print(f" La compra con id '{id}' ya se encuentra cancelada")
+        print(f"{Fore.RED} La compra con id '{id}' ya se encuentra cancelada")
         print()
         cancelar = False
     else:
-        print(f" No se encontro compra para el id: '{id}'")
+        print(f"{Fore.RED} No se encontro compra para el id: '{id}'")
         print()
         cancelar = False
 

@@ -3,6 +3,9 @@ from compras import *;
 import random;
 from crearUsuario import *; 
 from pantallas import *
+from colorama import init, Fore, Back, Style
+
+init(autoreset=True)
 
 def calcular_descuento(precio, descuento):
     """
@@ -60,7 +63,7 @@ def procesar_pago(precio_total):
         else:
             proceso_compra_screen()
             print(f" El precio total de tu compra es: ${precio_total:.2f}.")
-            print(" La tarjeta tiene un formato inválido. Asegúrate de que solo contenga números y tenga entre 13 y 19 dígitos.")
+            print(f"{Fore.RED} La tarjeta tiene un formato inválido. Asegúrate de que solo contenga números y tenga entre 13 y 19 dígitos.")
     
     confirmacion_pago = ""
     while confirmacion_pago != "S" and confirmacion_pago != "N":
@@ -72,7 +75,7 @@ def procesar_pago(precio_total):
     if confirmacion_pago == "S":
         print(f" Procesando el pago de ${precio_total:.2f}...")
         
-        print("¡Pago procesado exitosamente! ¡Gracias por tu compra!")
+        print(f"{Fore.GREEN}¡Pago procesado exitosamente! ¡Gracias por tu compra!")
         return True  
     else:
         print(" El pago ha sido cancelado. Vuelve cuando estés listo para completar la compra.")
@@ -126,7 +129,7 @@ def generar_comprobante(cantidad_entradas, precio_total, cupón_aplicado, ubicac
         f"     Ubicación: {ubicacion}\n"
         f"     {descuento}\n"
         f"     Precio total: ${precio_total:.2f}\n"
-        f"     Estado: APROBADO\n"
+        f"     Estado: {Fore.GREEN}APROBADO\n"
         f"                                            \n"
         f"--------------------------------------------"
     )

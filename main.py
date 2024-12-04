@@ -46,16 +46,15 @@ def main():
 
                             selecionar_ubicacion_screen()
                             imprimir_sala(sala_elegida["sala"], lista_precios, fila_en_letras, lista_asientos)
-                            filas_elegidas, lugares_elegidos, retroceder = elegir_lugares(fila_en_letras,lista_asientos, cant_tickets, sala_elegida, lista_precios)
-                            if not retroceder:
-                                checkout_screen()
-                                total_compra = calcular_total_compra(filas_elegidas, lista_precios)
-                                total_pagar, cupon_aplicado = procesar_checkout(total_compra, lugares_elegidos)
-                                proceso_compra_screen()
-                                resultado_operacion = procesar_pago(total_pagar)
-                                if resultado_operacion == True:
-                                    marcar_asientos(lugares_elegidos, indice_sala, OCUPADO)
-                                    generar_comprobante(cant_tickets, total_pagar, cupon_aplicado, lugares_elegidos, usuario,sala_elegida["nombreArtista"],sala_elegida["fecha"], indice_sala)
+                            filas_elegidas, lugares_elegidos = elegir_lugares(fila_en_letras,lista_asientos, cant_tickets, sala_elegida, lista_precios)
+                            checkout_screen()
+                            total_compra = calcular_total_compra(filas_elegidas, lista_precios)
+                            total_pagar, cupon_aplicado = procesar_checkout(total_compra, lugares_elegidos)
+                            proceso_compra_screen()
+                            resultado_operacion = procesar_pago(total_pagar)
+                            if resultado_operacion == True:
+                                marcar_asientos(lugares_elegidos, indice_sala, OCUPADO)
+                                generar_comprobante(cant_tickets, total_pagar, cupon_aplicado, lugares_elegidos, usuario,sala_elegida["nombreArtista"],sala_elegida["fecha"], indice_sala)
                     elif opcion_menu_usuario == 2:
                         consultar_comprobantes_screen(usuario)
                         obtener_comprobantes(usuario)

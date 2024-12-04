@@ -64,44 +64,39 @@ def elegir_lugares(filas,asientos,cant_tickets, show, lista_precios):
         while coordenada_incorrecta:
             try:
                 coordenadas = input(f"Ingrese las coordenadas de su ticket nro {i}, indicando primero la fila y luego el asiento:\n").upper()
-                if coordenadas != "":
-                    retroceder == False
-                    coordenada_incorrecta = verificar_coordenadas(filas, asientos, coordenadas)
+                coordenada_incorrecta = verificar_coordenadas(filas, asientos, coordenadas)
 
-                    if coordenada_incorrecta == 1:
+                if coordenada_incorrecta == 1:
+                    selecionar_ubicacion_screen()
+                    imprimir_sala(show["sala"], lista_precios, filas, asientos)
+                    print("Las coordenadas ingresadas no se encuentran en pantalla")
+                elif coordenada_incorrecta == 2:
+                    selecionar_ubicacion_screen()
+                    imprimir_sala(show["sala"], lista_precios, filas, asientos)
+                    print("Las coordenadas ingresadas no poseen un formato valido")
+
+                if not(coordenada_incorrecta):
+                    
+                    fila_elegida, asiento_elegido = separar_fila_asiento(coordenadas)
+                    fila_elegida_numerica = ord(fila_elegida) - 65 #paso la fila de letra a numero para transformala a un indice
+
+                    #Verifico que la ubicacion este disponible dentro de la sala
+                    if show["sala"][fila_elegida_numerica][asiento_elegido] == 0:
                         selecionar_ubicacion_screen()
                         imprimir_sala(show["sala"], lista_precios, filas, asientos)
-                        print("Las coordenadas ingresadas no se encuentran en pantalla")
-                    elif coordenada_incorrecta == 2:
-                        selecionar_ubicacion_screen()
-                        imprimir_sala(show["sala"], lista_precios, filas, asientos)
-                        print("Las coordenadas ingresadas no poseen un formato valido")
-
-                    if not(coordenada_incorrecta):
-                        
-                        fila_elegida, asiento_elegido = separar_fila_asiento(coordenadas)
-                        fila_elegida_numerica = ord(fila_elegida) - 65 #paso la fila de letra a numero para transformala a un indice
-
-                        #Verifico que la ubicacion este disponible dentro de la sala
-                        if show["sala"][fila_elegida_numerica][asiento_elegido] == 0:
+                        print("La ubicacion seleccionada esta ocupada, por favor ingese una ubicacion libre")
+                        coordenada_incorrecta = True
+                    else:
+                        if not(coordenadas in esta_compra):
+                            esta_compra.append(coordenadas) #Guardo las coordenadas para validar duplicidad durante la compra
+                            #Guardo una lista de filas que me servira para calcular el total de la compra
+                            #ya que el precio de un asiento depende de su fila
+                            lista_fila.append(fila_elegida_numerica)
+                        else:
                             selecionar_ubicacion_screen()
                             imprimir_sala(show["sala"], lista_precios, filas, asientos)
-                            print("La ubicacion seleccionada esta ocupada, por favor ingese una ubicacion libre")
-                            coordenada_incorrecta = True
-                        else:
-                            if not(coordenadas in esta_compra):
-                                esta_compra.append(coordenadas) #Guardo las coordenadas para validar duplicidad durante la compra
-                                #Guardo una lista de filas que me servira para calcular el total de la compra
-                                #ya que el precio de un asiento depende de su fila
-                                lista_fila.append(fila_elegida_numerica)
-                            else:
-                                selecionar_ubicacion_screen()
-                                imprimir_sala(show["sala"], lista_precios, filas, asientos)
-                                print(f"Las cordenadas '{coordenadas}' ya fueron elegidas en esta compra, por favor ingrese otra ubicacion disponible \n")
-                                coordenada_incorrecta = True
-                else:
-                    retroceder = True
-                    return 0, 0, retroceder    
+                            print(f"Las cordenadas '{coordenadas}' ya fueron elegidas en esta compra, por favor ingrese otra ubicacion disponible \n")
+                            coordenada_incorrecta = True  
             except:
                 selecionar_ubicacion_screen()
                 imprimir_sala(show["sala"], lista_precios, filas, asientos)
@@ -110,7 +105,7 @@ def elegir_lugares(filas,asientos,cant_tickets, show, lista_precios):
                 
         cant_tickets -=1
 
-    return lista_fila, esta_compra, retroceder
+    return lista_fila, esta_compra
 
 def marcar_asientos(lista_compras, indice_sala, estado):
     """

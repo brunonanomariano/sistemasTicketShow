@@ -3,6 +3,9 @@ from globales import *
 import json
 import os
 from pantallas import *
+from colorama import init, Fore, Back, Style
+
+init(autoreset=True)
 
 def existe_archivo(archivo):
     """"
@@ -150,11 +153,11 @@ def crearUsuario():
             usuarioInvalido = existeUsuario(usuario,archivo_usuarios)
             if usuarioInvalido == True:
                 crear_usuario_screen()
-                print("El usuario ya existe. Por favor intente nuevamente...")
+                print(f"{Fore.RED}El usuario ya existe. Por favor intente nuevamente...")
         else:
             usuarioInvalido = True
             crear_usuario_screen()
-            print("El email ingresado no tiene un formato válido. Por favor, intente nuevamente. ")
+            print(f"{Fore.RED}El email ingresado no tiene un formato válido. Por favor, intente nuevamente. ")
 
     passwordInvalido = True 
 
@@ -170,12 +173,12 @@ def crearUsuario():
         else:
            passwordInvalido = True
            crear_usuario_screen() 
-           print("La contraseña ingresada no cumple con los requisitos. Por favor, intente nuevamente. ")
+           print(f"{Fore.RED}La contraseña ingresada no cumple con los requisitos. Por favor, intente nuevamente. ")
          
     if guardar_usuario(usuario,password,archivo_usuarios):
         print("")
-        print("Usuario creado exitosamente!")
+        print(f"{Fore.GREEN}Usuario creado exitosamente!")
         input("Presione ENTER para volver al menu principal")
     else:
-        print("No se pudo crear el usuario")
+        print(f"{Fore.RED}No se pudo crear el usuario")
         input("Presione ENTER para volver al menu principal")

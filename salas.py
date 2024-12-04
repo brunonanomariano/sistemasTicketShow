@@ -2,6 +2,9 @@ from functools import reduce;
 import random
 from crearUsuario import *
 from globales import archivo_salas;
+from colorama import init, Fore, Back, Style
+
+init(autoreset=True)
 
 def crear_sala(cant_asientos, cant_filas):
     """
@@ -87,9 +90,9 @@ def imprimir_sala(sala, lista_precios, fila_en_letras, asientos):
         
         for asiento in fila:
             if asiento == 1:
-                estado_asiento = "O"
+                estado_asiento = f"{Fore.GREEN}O"
             else:
-                estado_asiento = "X"
+                estado_asiento = f"{Fore.RED}X"
 
             print(estado_asiento, " " * 4, end= " ")
         
